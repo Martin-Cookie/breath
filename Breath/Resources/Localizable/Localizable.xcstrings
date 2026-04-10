@@ -681,6 +681,54 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "OK" } }
       }
     },
+    "stats.best_retention" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nejdelší zadržení" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Best retention" } }
+      }
+    },
+    "stats.retention_chart" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Průběh zadržení" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Retention over time" } }
+      }
+    },
+    "stats.history" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Historie" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "History" } }
+      }
+    },
+    "stats.no_data" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Zatím žádná data" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No data yet" } }
+      }
+    },
+    "stats.no_sessions_yet" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Dokončené cvičení se zobrazí zde" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Completed sessions will appear here" } }
+      }
+    },
+    "stats.period.week" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "7 dní" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "7d" } }
+      }
+    },
+    "stats.period.month" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "30 dní" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "30d" } }
+      }
+    },
+    "stats.period.all" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Vše" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "All" } }
+      }
+    },
     "results.average" : {
       "extractionState" : "stale",
       "localizations" : {

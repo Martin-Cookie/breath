@@ -9,9 +9,9 @@ struct StatsView: View {
     @State private var showPaywall = false
 
     enum Period: String, CaseIterable, Identifiable {
-        case week = "7d"
-        case month = "30d"
-        case all = "Vše"
+        case week
+        case month
+        case all
         var id: String { rawValue }
 
         var days: Int? {
@@ -19,6 +19,14 @@ struct StatsView: View {
             case .week: return 7
             case .month: return 30
             case .all: return nil
+            }
+        }
+
+        var localizedTitle: String {
+            switch self {
+            case .week: return String(localized: "stats.period.week")
+            case .month: return String(localized: "stats.period.month")
+            case .all: return String(localized: "stats.period.all")
             }
         }
 
@@ -53,12 +61,17 @@ struct StatsView: View {
         sessions.map(\.totalDuration).reduce(0, +)
     }
 
+    private var bestRetentionEver: TimeInterval {
+        sessions.map(\.bestRetention).max() ?? 0
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                statCards
+                statCardsRow1
+                statCardsRow2
 
-                Text("Retention Time")
+                Text(String(localized: "stats.retention_chart"))
                     .font(.headline)
                     .foregroundStyle(Constants.Palette.primaryTeal)
 
@@ -76,7 +89,7 @@ struct StatsView: View {
                 )) {
                     ForEach(Period.allCases) { p in
                         HStack {
-                            Text(p.rawValue)
+                            Text(p.localizedTitle)
                             if p.isPremium && !store.isPremium {
                                 Image(systemName: "lock.fill")
                             }
@@ -86,13 +99,17 @@ struct StatsView: View {
                 }
                 .pickerStyle(.segmented)
 
-                Text("Historie")
+                Text(String(localized: "stats.history"))
                     .font(.headline)
                     .foregroundStyle(Constants.Palette.primaryTeal)
                     .padding(.top, 8)
 
-                ForEach(filteredSessions) { session in
-                    SessionRowView(session: session)
+                if filteredSessions.isEmpty {
+                    emptyHistory
+                } else {
+                    ForEach(filteredSessions) { session in
+                        SessionRowView(session: session)
+                    }
                 }
             }
             .padding()
@@ -104,10 +121,16 @@ struct StatsView: View {
         }
     }
 
-    private var statCards: some View {
+    private var statCardsRow1: some View {
         HStack(spacing: 12) {
             statCard(value: "\(sessions.count)", label: String(localized: "stats.sessions"))
             statCard(value: TimeFormatter.mmss(totalTime), label: String(localized: "stats.total_time"))
+            statCard(value: TimeFormatter.mmss(bestRetentionEver), label: String(localized: "stats.best_retention"))
+        }
+    }
+
+    private var statCardsRow2: some View {
+        HStack(spacing: 12) {
             statCard(value: "\(streak.currentStreak)", label: String(localized: "stats.current_streak"))
             statCard(value: "\(streak.bestStreak)", label: String(localized: "stats.best_streak"))
         }
@@ -133,28 +156,87 @@ struct StatsView: View {
     @ViewBuilder
     private var chart: some View {
         if filteredSessions.isEmpty {
-            Text("Žádná data")
-                .foregroundStyle(Constants.Palette.textSecondary)
-                .frame(maxWidth: .infinity, minHeight: 180)
-                .background(Constants.Palette.surface)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
+            VStack(spacing: 12) {
+                Image(systemName: "chart.line.uptrend.xyaxis")
+                    .font(.system(size: 36))
+                    .foregroundStyle(Constants.Palette.textSecondary.opacity(0.5))
+                Text(String(localized: "stats.no_data"))
+                    .font(.subheadline)
+                    .foregroundStyle(Constants.Palette.textSecondary)
+            }
+            .frame(maxWidth: .infinity, minHeight: 180)
+            .background(Constants.Palette.surface)
+            .clipShape(RoundedRectangle(cornerRadius: 16))
         } else {
             Chart(filteredSessions.reversed()) { session in
+                AreaMark(
+                    x: .value("Datum", session.date),
+                    y: .value("Retention", session.bestRetention)
+                )
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [
+                            Constants.Palette.primaryTeal.opacity(0.35),
+                            Constants.Palette.primaryTeal.opacity(0.02)
+                        ],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
+                )
+                .interpolationMethod(.catmullRom)
+
                 LineMark(
                     x: .value("Datum", session.date),
                     y: .value("Retention", session.bestRetention)
                 )
                 .foregroundStyle(Constants.Palette.primaryTeal)
+                .lineStyle(StrokeStyle(lineWidth: 2.5))
+                .interpolationMethod(.catmullRom)
+
                 PointMark(
                     x: .value("Datum", session.date),
                     y: .value("Retention", session.bestRetention)
                 )
                 .foregroundStyle(Constants.Palette.primaryTeal)
+                .symbolSize(40)
             }
-            .frame(height: 180)
+            .chartYAxis {
+                AxisMarks(position: .leading) { value in
+                    AxisGridLine().foregroundStyle(Constants.Palette.textSecondary.opacity(0.15))
+                    AxisValueLabel {
+                        if let seconds = value.as(Double.self) {
+                            Text(TimeFormatter.mmss(seconds))
+                                .font(.caption2)
+                        }
+                    }
+                }
+            }
+            .chartXAxis {
+                AxisMarks(values: .automatic(desiredCount: 4)) { _ in
+                    AxisGridLine().foregroundStyle(Constants.Palette.textSecondary.opacity(0.1))
+                    AxisValueLabel(format: .dateTime.day().month(.abbreviated), centered: true)
+                        .font(.caption2)
+                }
+            }
+            .frame(height: 200)
             .padding()
             .background(Constants.Palette.surface)
             .clipShape(RoundedRectangle(cornerRadius: 16))
         }
+    }
+
+    private var emptyHistory: some View {
+        VStack(spacing: 8) {
+            Image(systemName: "sparkles")
+                .font(.title)
+                .foregroundStyle(Constants.Palette.primaryTeal.opacity(0.5))
+            Text(String(localized: "stats.no_sessions_yet"))
+                .font(.subheadline)
+                .foregroundStyle(Constants.Palette.textSecondary)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.vertical, 32)
+        .background(Constants.Palette.surface)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }
