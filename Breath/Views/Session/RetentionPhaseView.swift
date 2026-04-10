@@ -2,7 +2,7 @@ import SwiftUI
 
 struct RetentionPhaseView: View {
     @ObservedObject var viewModel: SessionViewModel
-    @State private var pulse: CGFloat = 0.5
+    @State private var pulse: CGFloat = 0.95
 
     var body: some View {
         VStack(spacing: 24) {
@@ -17,8 +17,8 @@ struct RetentionPhaseView: View {
                 .foregroundStyle(Constants.Palette.textSecondary)
         }
         .onAppear {
-            withAnimation(.easeInOut(duration: 0.6).repeatForever(autoreverses: true)) {
-                pulse = 0.55
+            withAnimation(.easeInOut(duration: 2.4).repeatForever(autoreverses: true)) {
+                pulse = 1.05
             }
         }
     }
