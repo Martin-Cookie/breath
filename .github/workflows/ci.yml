@@ -16,11 +16,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Select Xcode
-        run: sudo xcode-select -s /Applications/Xcode_16.2.app/Contents/Developer
-
       - name: Show Xcode version
         run: xcodebuild -version
+
+      - name: List installed simulator runtimes
+        run: xcrun simctl list runtimes
 
       - name: Install XcodeGen
         run: brew install xcodegen
