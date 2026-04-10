@@ -91,6 +91,12 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } }
       }
     },
+    "results.share" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Sdílet" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Share" } }
+      }
+    },
     "stats.title" : {
       "localizations" : {
         "cs" : { "stringUnit" : { "state" : "translated", "value" : "Statistiky" } },

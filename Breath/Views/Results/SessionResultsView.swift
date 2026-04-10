@@ -1,10 +1,25 @@
 import SwiftUI
 
 struct SessionResultsView: View {
+    @EnvironmentObject private var store: StoreService
+    @State private var showPaywall = false
+
     let rounds: [RoundResult]
     let totalDuration: TimeInterval
     let configuration: SessionConfiguration
     var onDone: () -> Void
+
+    private var shareText: String {
+        let best = rounds.map(\.retentionTime).max() ?? 0
+        let perRound = rounds
+            .map { "Round \($0.roundNumber): \(TimeFormatter.mmss($0.retentionTime))" }
+            .joined(separator: "\n")
+        return """
+        🌬️ Breath — \(rounds.count) rounds, total \(TimeFormatter.mmss(totalDuration))
+        Best retention: \(TimeFormatter.mmss(best))
+        \(perRound)
+        """
+    }
 
     private var best: TimeInterval {
         rounds.map(\.retentionTime).max() ?? 0
@@ -60,8 +75,41 @@ struct SessionResultsView: View {
                             .foregroundStyle(.white)
                             .clipShape(RoundedRectangle(cornerRadius: 16))
                     }
+
+                    shareButton
                 }
                 .padding()
+            }
+        }
+        .sheet(isPresented: $showPaywall) {
+            PaywallView()
+        }
+    }
+
+    @ViewBuilder
+    private var shareButton: some View {
+        if store.isPremium {
+            ShareLink(item: shareText) {
+                Text(String(localized: "results.share"))
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 16)
+                    .background(Constants.Palette.surface)
+                    .foregroundStyle(Constants.Palette.primaryTeal)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+            }
+        } else {
+            Button(action: { showPaywall = true }) {
+                HStack {
+                    Image(systemName: "lock.fill")
+                    Text(String(localized: "results.share"))
+                }
+                .font(.headline)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 16)
+                .background(Constants.Palette.surface)
+                .foregroundStyle(Constants.Palette.textSecondary)
+                .clipShape(RoundedRectangle(cornerRadius: 16))
             }
         }
     }

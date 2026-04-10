@@ -35,7 +35,9 @@ struct BreathTimelineProvider: TimelineProvider {
         let lastInterval = defaults?.double(forKey: "stats.lastSessionDate") ?? 0
         let lastSession: Date? = lastInterval > 0 ? Date(timeIntervalSince1970: lastInterval) : nil
         let entry = BreathEntry(date: .now, streak: streak, lastSession: lastSession)
-        completion(Timeline(entries: [entry], policy: .atEnd))
+        // Timeline se obnovuje každou hodinu.
+        let nextRefresh = Calendar.current.date(byAdding: .hour, value: 1, to: .now) ?? .now
+        completion(Timeline(entries: [entry], policy: .after(nextRefresh)))
     }
 }
 

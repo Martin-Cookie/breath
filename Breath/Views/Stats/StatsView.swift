@@ -3,8 +3,10 @@ import SwiftData
 import Charts
 
 struct StatsView: View {
+    @EnvironmentObject private var store: StoreService
     @Query(sort: \Session.date, order: .reverse) private var sessions: [Session]
     @State private var period: Period = .week
+    @State private var showPaywall = false
 
     enum Period: String, CaseIterable, Identifiable {
         case week = "7d"
@@ -19,12 +21,28 @@ struct StatsView: View {
             case .all: return nil
             }
         }
+
+        var isPremium: Bool {
+            self != .week
+        }
+    }
+
+    /// Free tier vidí maximálně `Constants.Freemium.freeHistoryDays` dnů historie.
+    private var accessibleSessions: [Session] {
+        if store.isPremium { return sessions }
+        let cutoff = Calendar.current.date(
+            byAdding: .day,
+            value: -Constants.Freemium.freeHistoryDays,
+            to: .now
+        ) ?? .now
+        return sessions.filter { $0.date >= cutoff }
     }
 
     private var filteredSessions: [Session] {
-        guard let days = period.days else { return sessions }
+        let base = accessibleSessions
+        guard let days = period.days else { return base }
         let cutoff = Calendar.current.date(byAdding: .day, value: -days, to: .now) ?? .now
-        return sessions.filter { $0.date >= cutoff }
+        return base.filter { $0.date >= cutoff }
     }
 
     private var streak: StreakService.StreakInfo {
@@ -46,9 +64,24 @@ struct StatsView: View {
 
                 chart
 
-                Picker("", selection: $period) {
+                Picker("", selection: Binding(
+                    get: { period },
+                    set: { newValue in
+                        if newValue.isPremium && !store.isPremium {
+                            showPaywall = true
+                        } else {
+                            period = newValue
+                        }
+                    }
+                )) {
                     ForEach(Period.allCases) { p in
-                        Text(p.rawValue).tag(p)
+                        HStack {
+                            Text(p.rawValue)
+                            if p.isPremium && !store.isPremium {
+                                Image(systemName: "lock.fill")
+                            }
+                        }
+                        .tag(p)
                     }
                 }
                 .pickerStyle(.segmented)
@@ -66,6 +99,9 @@ struct StatsView: View {
         }
         .navigationTitle(String(localized: "stats.title"))
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $showPaywall) {
+            PaywallView()
+        }
     }
 
     private var statCards: some View {

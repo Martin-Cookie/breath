@@ -105,5 +105,10 @@ struct SessionView: View {
         )
         modelContext.insert(session)
         try? modelContext.save()
+
+        // Aktualizuj sdílená data pro widget.
+        let descriptor = FetchDescriptor<Session>(sortBy: [SortDescriptor(\.date, order: .reverse)])
+        let allSessions = (try? modelContext.fetch(descriptor)) ?? [session]
+        WidgetDataService.update(with: allSessions)
     }
 }

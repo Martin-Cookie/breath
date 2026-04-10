@@ -39,6 +39,20 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: cz.martinkoci.breath
         GENERATE_INFOPLIST_FILE: NO
         TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_ENTITLEMENTS: Breath/Breath.entitlements
+
+  BreathTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: BreathTests
+    dependencies:
+      - target: Breath
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: cz.martinkoci.breath.tests
+        GENERATE_INFOPLIST_FILE: YES
 
   BreathWidget:
     type: app-extension
@@ -56,6 +70,7 @@ targets:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: cz.martinkoci.breath.widget
         GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGN_ENTITLEMENTS: BreathWidget/BreathWidget.entitlements
 
 schemes:
   Breath:
@@ -63,10 +78,13 @@ schemes:
       targets:
         Breath: all
         BreathWidget: all
+        BreathTests: [test]
     run:
       config: Debug
     test:
       config: Debug
+      targets:
+        - BreathTests
     profile:
       config: Release
     analyze:

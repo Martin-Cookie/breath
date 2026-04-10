@@ -1,0 +1,50 @@
+disabled_rules:
+  - trailing_whitespace
+  - todo
+  - line_length
+
+opt_in_rules:
+  - empty_count
+  - closure_spacing
+  - unneeded_parentheses_in_closure_argument
+  - redundant_nil_coalescing
+  - first_where
+  - sorted_first_last
+  - contains_over_first_not_nil
+  - overridden_super_call
+  - weak_delegate
+  - private_outlet
+
+excluded:
+  - Breath.xcodeproj
+  - build
+  - DerivedData
+  - .build
+
+identifier_name:
+  min_length: 1
+  excluded:
+    - id
+    - cs
+    - en
+    - up
+    - x
+    - y
+
+type_name:
+  min_length: 3
+  max_length:
+    warning: 50
+    error: 60
+
+function_body_length:
+  warning: 80
+  error: 150
+
+file_length:
+  warning: 500
+  error: 1000
+
+cyclomatic_complexity:
+  warning: 15
+  error: 25
