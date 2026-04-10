@@ -30,6 +30,8 @@ enum SettingsKey {
 
     static let isPremium = "settings.isPremium"
 
+    static let hasSeenOnboarding = "settings.hasSeenOnboarding"
+
     static let currentStreak = "stats.currentStreak"
     static let bestStreak = "stats.bestStreak"
     static let lastSessionDate = "stats.lastSessionDate"

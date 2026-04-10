@@ -252,6 +252,168 @@
         "cs" : { "stringUnit" : { "state" : "translated", "value" : "Čas" } },
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Time" } }
       }
+    },
+    "settings.title" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nastavení" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Settings" } }
+      }
+    },
+    "settings.done" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Hotovo" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } }
+      }
+    },
+    "settings.section.notifications" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Připomínky" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reminders" } }
+      }
+    },
+    "settings.section.subscription" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Předplatné" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Subscription" } }
+      }
+    },
+    "settings.section.data" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Data" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Data" } }
+      }
+    },
+    "settings.section.about" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "O aplikaci" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "About" } }
+      }
+    },
+    "settings.premium_active" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Premium aktivní" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Premium active" } }
+      }
+    },
+    "settings.unlock_premium" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Odemknout Premium" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unlock Premium" } }
+      }
+    },
+    "settings.restore_purchases" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Obnovit nákupy" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Restore purchases" } }
+      }
+    },
+    "settings.reset_data" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Smazat všechna data" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reset all data" } }
+      }
+    },
+    "settings.reset_confirm_title" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Opravdu smazat všechna data?" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reset all data?" } }
+      }
+    },
+    "settings.reset_confirm_message" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Tato akce nevratně smaže všechny tvoje session a statistiky." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "This will permanently delete all your sessions and stats." } }
+      }
+    },
+    "settings.reset_confirm" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Smazat" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete" } }
+      }
+    },
+    "settings.version" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Verze" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Version" } }
+      }
+    },
+    "settings.wim_hof_link" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Wim Hof Method" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Wim Hof Method" } }
+      }
+    },
+    "settings.safety_disclaimer" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nikdy necvič ve vodě ani při řízení. Při závratích okamžitě přestaň a normálně dýchej. Pokud máš zdravotní potíže, poraď se s lékařem." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Never practice in water or while driving. Stop immediately and breathe normally if you feel dizzy. Consult a doctor if you have health conditions." } }
+      }
+    },
+    "onboarding.next" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Pokračovat" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Continue" } }
+      }
+    },
+    "onboarding.start" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Začít cvičit" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start practicing" } }
+      }
+    },
+    "onboarding.welcome.title" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Vítej v Breath" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Welcome to Breath" } }
+      }
+    },
+    "onboarding.welcome.subtitle" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Řízené dýchání inspirované Wim Hof metodou" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Guided breathing inspired by the Wim Hof Method" } }
+      }
+    },
+    "onboarding.welcome.body" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Cvičení probíhá v kolech: 30–40 hlubokých nádechů, pak výdech a zadržení dechu. Na konci kola se zhluboka nadechneš a krátce podržíš." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Each round: 30–40 deep breaths, then exhale and hold. At the end, inhale deeply and briefly hold." } }
+      }
+    },
+    "onboarding.safety.title" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Bezpečnost především" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Safety first" } }
+      }
+    },
+    "onboarding.safety.subtitle" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Cvič vždy vsedě nebo vleže" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Always practice sitting or lying down" } }
+      }
+    },
+    "onboarding.safety.body" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nikdy necvič ve vodě ani při řízení. Při závratích okamžitě přestaň. Pokud máš zdravotní potíže, poraď se s lékařem." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Never practice in water or while driving. Stop if you feel dizzy. Consult a doctor if you have health conditions." } }
+      }
+    },
+    "onboarding.notifications.title" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Denní připomínka" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daily reminder" } }
+      }
+    },
+    "onboarding.notifications.subtitle" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Pravidelnost dělá rozdíl" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Consistency is key" } }
+      }
+    },
+    "onboarding.notifications.body" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Pošleme ti každé ráno připomínku, ať na cvičení nezapomeneš. Čas můžeš kdykoliv změnit v nastavení." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "We'll remind you each morning so you don't skip a day. You can change the time anytime in settings." } }
+      }
     }
   },
   "version" : "1.0"

@@ -5,6 +5,7 @@ struct ConfigurationView: View {
     @StateObject private var vm = ConfigurationViewModel()
 
     @State private var showPaywall = false
+    @State private var showSettings = false
     @State private var sessionViewModel: SessionViewModel?
 
     var body: some View {
@@ -78,6 +79,13 @@ struct ConfigurationView: View {
             .navigationTitle(String(localized: "config.title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        showSettings = true
+                    } label: {
+                        Image(systemName: "gearshape.fill")
+                    }
+                }
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink(destination: StatsView()) {
                         Image(systemName: "chart.bar.fill")
@@ -86,6 +94,9 @@ struct ConfigurationView: View {
             }
             .sheet(isPresented: $showPaywall) {
                 PaywallView()
+            }
+            .sheet(isPresented: $showSettings) {
+                SettingsView()
             }
             .fullScreenCover(item: $sessionViewModel) { svm in
                 SessionView(viewModel: svm)
