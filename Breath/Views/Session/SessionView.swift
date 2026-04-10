@@ -110,5 +110,13 @@ struct SessionView: View {
         let descriptor = FetchDescriptor<Session>(sortBy: [SortDescriptor(\.date, order: .reverse)])
         let allSessions = (try? modelContext.fetch(descriptor)) ?? [session]
         WidgetDataService.update(with: allSessions)
+
+        // Přeplánuj streak warning — po dokončení dnešní session ho smazat;
+        // pokud uživatel další den nebude cvičit, warning se přeplánuje při startu app.
+        let info = StreakService.compute(from: allSessions)
+        NotificationService.scheduleStreakWarning(
+            streakCount: info.currentStreak,
+            lastSessionDate: info.lastSessionDate
+        )
     }
 }

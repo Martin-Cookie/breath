@@ -22,6 +22,7 @@ targets:
     deploymentTarget: "17.0"
     sources:
       - path: Breath
+      - path: Shared
     resources:
       - path: Breath/Resources
     info:
@@ -60,6 +61,7 @@ targets:
     deploymentTarget: "17.0"
     sources:
       - path: BreathWidget
+      - path: Shared
     info:
       path: BreathWidget/Info.plist
       properties:
