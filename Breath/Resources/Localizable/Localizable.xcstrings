@@ -1,0 +1,156 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "config.title" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Řízené dýchání" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Guided Breathing" } }
+      }
+    },
+    "config.speed.slow" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Pomalé" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Slow" } }
+      }
+    },
+    "config.speed.standard" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Standardní" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Standard" } }
+      }
+    },
+    "config.speed.fast" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Rychlé" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fast" } }
+      }
+    },
+    "config.rounds" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Kola:" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Rounds:" } }
+      }
+    },
+    "config.breaths" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nádechů:" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Breaths:" } }
+      }
+    },
+    "config.start" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Start" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start" } }
+      }
+    },
+    "session.breathe_in" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "NADECHNĚTE" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "BREATHE IN" } }
+      }
+    },
+    "session.breathe_out" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "VYDECHNĚTE" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "BREATHE OUT" } }
+      }
+    },
+    "session.hold" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "ZADRŽTE" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "HOLD" } }
+      }
+    },
+    "session.tap_to_breathe" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Tapněte pro nádech" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tap anywhere to breathe" } }
+      }
+    },
+    "results.complete" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Cvičení dokončeno" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Session Complete" } }
+      }
+    },
+    "results.best" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nejlepší" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Best" } }
+      }
+    },
+    "results.average" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Průměr" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Average" } }
+      }
+    },
+    "results.done" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Hotovo" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } }
+      }
+    },
+    "stats.title" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Statistiky" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Statistics" } }
+      }
+    },
+    "stats.sessions" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Relace" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sessions" } }
+      }
+    },
+    "stats.total_time" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Celkový čas" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Total time" } }
+      }
+    },
+    "stats.current_streak" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Streak" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Current streak" } }
+      }
+    },
+    "stats.best_streak" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nejdelší streak" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Best streak" } }
+      }
+    },
+    "paywall.title" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Odemknout Breath Pro" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unlock Breath Pro" } }
+      }
+    },
+    "paywall.upgrade" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Upgradovat" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Upgrade" } }
+      }
+    },
+    "paywall.restore" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Obnovit nákupy" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Restore purchases" } }
+      }
+    },
+    "notification.reminder" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Čas na dýchání!" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Time to breathe!" } }
+      }
+    },
+    "notification.streak_warning" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Neztrácej svůj %d denní streak!" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Don't lose your %d-day streak!" } }
+      }
+    }
+  },
+  "version" : "1.0"
+}
