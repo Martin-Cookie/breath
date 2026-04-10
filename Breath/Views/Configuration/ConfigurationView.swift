@@ -24,15 +24,15 @@ struct ConfigurationView: View {
                             )
                         )
 
-                        RoundsSelector(selection: $vm.rounds)
-                        BreathsSelector(selection: $vm.breathsBeforeRetention)
+                        RoundsBreathsRow(rounds: $vm.rounds, breaths: $vm.breathsBeforeRetention)
 
                         MusicSettingsSection(
                             enabled: $vm.backgroundMusicEnabled,
                             breathingEnabled: $vm.breathingPhaseMusic,
                             breathingTrack: $vm.breathingPhaseMusicTrack,
                             retentionEnabled: $vm.retentionPhaseMusic,
-                            retentionTrack: $vm.retentionPhaseMusicTrack
+                            retentionTrack: $vm.retentionPhaseMusicTrack,
+                            volume: $vm.musicVolume
                         )
 
                         GuidanceSettingsSection(
@@ -40,18 +40,22 @@ struct ConfigurationView: View {
                             breathingEnabled: $vm.breathingPhaseGuidance,
                             breathingStyle: $vm.breathingPhaseGuidanceStyle,
                             retentionEnabled: $vm.retentionPhaseGuidance,
-                            retentionStyle: $vm.retentionPhaseGuidanceStyle
+                            retentionStyle: $vm.retentionPhaseGuidanceStyle,
+                            volume: $vm.guidanceVolume,
+                            retentionAnnounceInterval: $vm.retentionAnnounceInterval
                         )
 
                         ExtraSettingsSection(
                             breathingSounds: $vm.breathingSounds,
+                            breathingSoundsVoice: $vm.breathingSoundsVoice,
+                            breathingSoundsVolume: $vm.breathingSoundsVolume,
                             hapticFeedback: $vm.hapticFeedback,
                             pingAndGong: $vm.pingAndGong
                         )
                     }
                     .padding()
                     // Prostor pro sticky Start button, aby nepřekrýval obsah.
-                    .padding(.bottom, 96)
+                    .padding(.bottom, 140)
                 }
 
                 // Sticky bottom Start button — vždy viditelný.

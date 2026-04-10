@@ -92,6 +92,9 @@ final class SessionViewModel: ObservableObject {
         remainingBreaths = configuration.breathsBeforeRetention
         breathStep = .inhale
 
+        audio.setMusicVolume(Float(configuration.musicVolume))
+        audio.setBreathingVolume(Float(configuration.breathingSoundsVolume))
+        audio.setGuidanceVolume(Float(configuration.guidanceVolume))
         if configuration.backgroundMusicEnabled, configuration.breathingPhaseMusic {
             audio.playMusic(track: configuration.breathingPhaseMusicTrack)
         }
@@ -107,14 +110,22 @@ final class SessionViewModel: ObservableObject {
     private func runBreathingLoop() async {
         let speed = configuration.speed
         while remainingBreaths > 0, !Task.isCancelled, phase == .breathing {
+            let isWarning = remainingBreaths <= 5
+
             breathStep = .inhale
-            if configuration.breathingSounds { audio.playBreathingIn() }
-            if configuration.hapticFeedback { haptic.impact(.soft) }
+            if configuration.breathingSounds {
+                if isWarning {
+                    audio.playWarning()
+                } else {
+                    audio.playBreathingIn(voice: configuration.breathingSoundsVoice)
+                }
+            }
+            if configuration.hapticFeedback { haptic.impact(isWarning ? .medium : .soft) }
             await sleep(seconds: speed.inhaleDuration)
             guard !Task.isCancelled, phase == .breathing else { return }
 
             breathStep = .exhale
-            if configuration.breathingSounds { audio.playBreathingOut() }
+            if configuration.breathingSounds { audio.playBreathingOut(voice: configuration.breathingSoundsVoice) }
             await sleep(seconds: speed.exhaleDuration)
             guard !Task.isCancelled, phase == .breathing else { return }
 
@@ -148,10 +159,19 @@ final class SessionViewModel: ObservableObject {
     }
 
     private func runRetentionTicker() async {
+        let interval = configuration.retentionAnnounceInterval
+        var lastAnnouncedTick = 0
         while !Task.isCancelled, phase == .retention {
             try? await Task.sleep(nanoseconds: 100_000_000)
             if let start = retentionStart {
                 retentionElapsed = Date.now.timeIntervalSince(start)
+                if interval > 0 {
+                    let tick = Int(retentionElapsed) / interval
+                    if tick > lastAnnouncedTick {
+                        lastAnnouncedTick = tick
+                        audio.speakRetentionTime(seconds: tick * interval)
+                    }
+                }
             }
         }
     }

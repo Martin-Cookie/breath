@@ -4,11 +4,19 @@ import AVFoundation
 protocol AudioServiceProtocol: Sendable {
     func playMusic(track: String)
     func stopMusic()
+    func setMusicVolume(_ volume: Float)
+    func previewMusic(track: String)
+    func stopPreview()
+    func setGuidanceVolume(_ volume: Float)
     func playGuidance(key: String, style: String)
-    func playBreathingIn()
-    func playBreathingOut()
+    func speakRetentionTime(seconds: Int)
+    func setBreathingVolume(_ volume: Float)
+    func playBreathingIn(voice: String)
+    func playBreathingOut(voice: String)
+    func previewBreathing(voice: String)
     func playPing()
     func playGong()
+    func playWarning()
     func stopAll()
 }
 
@@ -16,9 +24,17 @@ final class AudioService: AudioServiceProtocol, @unchecked Sendable {
     static let shared = AudioService()
 
     private var musicPlayer: AVAudioPlayer?
+    private var previewPlayer: AVAudioPlayer?
     private var guidancePlayer: AVAudioPlayer?
     private var sfxPlayer: AVAudioPlayer?
     private var speechSynth: AVSpeechSynthesizer?
+
+    /// Hlasitost hudby (0.0 – 1.0). Aplikuje se na aktuálně hrajícího `musicPlayer` i na nové přehrávání.
+    private var musicVolume: Float = 0.5
+    /// Hlasitost zvuků dýchání (0.0 – 1.0).
+    private var breathingVolume: Float = 1.0
+    /// Hlasitost hlasového vedení (0.0 – 1.0).
+    private var guidanceVolume: Float = 1.0
 
     /// Název stopy, která hrála před interruptem — pro případný resume.
     private var musicTrackBeforeInterruption: String?
@@ -97,13 +113,13 @@ final class AudioService: AudioServiceProtocol, @unchecked Sendable {
     // MARK: - Music
 
     func playMusic(track: String) {
-        guard let url = Bundle.main.url(forResource: track, withExtension: "m4a", subdirectory: "Audio/Music") else {
+        guard let url = Bundle.main.url(forResource: track, withExtension: "m4a") else {
             return
         }
         do {
             let player = try AVAudioPlayer(contentsOf: url)
             player.numberOfLoops = -1
-            player.volume = 0.5
+            player.volume = musicVolume
             player.play()
             musicPlayer = player
         } catch {
@@ -116,14 +132,47 @@ final class AudioService: AudioServiceProtocol, @unchecked Sendable {
         musicPlayer = nil
     }
 
+    func setMusicVolume(_ volume: Float) {
+        let clamped = max(0, min(1, volume))
+        musicVolume = clamped
+        musicPlayer?.volume = clamped
+        previewPlayer?.volume = clamped
+    }
+
+    func previewMusic(track: String) {
+        stopPreview()
+        guard let url = Bundle.main.url(forResource: track, withExtension: "m4a") else { return }
+        do {
+            let player = try AVAudioPlayer(contentsOf: url)
+            player.numberOfLoops = 0
+            player.volume = musicVolume
+            player.play()
+            previewPlayer = player
+        } catch {
+            print("AudioService preview error: \(error)")
+        }
+    }
+
+    func stopPreview() {
+        previewPlayer?.stop()
+        previewPlayer = nil
+    }
+
     // MARK: - Guidance (with AVSpeechSynthesizer fallback)
+
+    func setGuidanceVolume(_ volume: Float) {
+        let clamped = max(0, min(1, volume))
+        guidanceVolume = clamped
+        guidancePlayer?.volume = clamped
+    }
 
     func playGuidance(key: String, style: String) {
         let lang = Locale.current.language.languageCode?.identifier == "cs" ? "cs" : "en"
-        if let url = Bundle.main.url(forResource: key, withExtension: "m4a", subdirectory: "Audio/Guidance/\(lang)") {
+        if let url = Bundle.main.url(forResource: "\(key)_\(lang)", withExtension: "m4a")
+            ?? Bundle.main.url(forResource: key, withExtension: "m4a") {
             do {
                 let player = try AVAudioPlayer(contentsOf: url)
-                player.volume = 1.0
+                player.volume = guidanceVolume
                 player.play()
                 guidancePlayer = player
                 return
@@ -134,11 +183,30 @@ final class AudioService: AudioServiceProtocol, @unchecked Sendable {
         speakFallback(key: key, lang: lang)
     }
 
+    func speakRetentionTime(seconds: Int) {
+        let lang = Locale.current.language.languageCode?.identifier == "cs" ? "cs" : "en"
+        let text: String
+        if lang == "cs" {
+            // Pro hodnoty 15/30/45/60 platí tvar "sekund".
+            text = "\(seconds) sekund"
+        } else {
+            text = "\(seconds) seconds"
+        }
+        let utt = AVSpeechUtterance(string: text)
+        utt.voice = AVSpeechSynthesisVoice(language: lang == "cs" ? "cs-CZ" : "en-US")
+        utt.rate = 0.45
+        utt.volume = guidanceVolume
+        let synth = AVSpeechSynthesizer()
+        synth.speak(utt)
+        speechSynth = synth
+    }
+
     private func speakFallback(key: String, lang: String) {
         let text = guidanceFallbackText(key: key, lang: lang)
         let utterance = AVSpeechUtterance(string: text)
         utterance.voice = AVSpeechSynthesisVoice(language: lang == "cs" ? "cs-CZ" : "en-US")
         utterance.rate = 0.45
+        utterance.volume = guidanceVolume
         let synth = AVSpeechSynthesizer()
         synth.speak(utterance)
         speechSynth = synth
@@ -162,13 +230,39 @@ final class AudioService: AudioServiceProtocol, @unchecked Sendable {
 
     // MARK: - SFX
 
-    func playBreathingIn() { playSFX(resource: "breathing_in") }
-    func playBreathingOut() { playSFX(resource: "breathing_out") }
+    func setBreathingVolume(_ volume: Float) {
+        let clamped = max(0, min(1, volume))
+        breathingVolume = clamped
+    }
+
+    func playBreathingIn(voice: String) { playBreath(base: "breathing_in", voice: voice) }
+    func playBreathingOut(voice: String) { playBreath(base: "breathing_out", voice: voice) }
+
+    func previewBreathing(voice: String) {
+        playBreath(base: "breathing_in", voice: voice)
+    }
+
+    private func playBreath(base: String, voice: String) {
+        let suffixed = voice == "female" ? "\(base)_female" : base
+        let url = Bundle.main.url(forResource: suffixed, withExtension: "m4a")
+            ?? Bundle.main.url(forResource: base, withExtension: "m4a")
+        guard let url else { return }
+        do {
+            let player = try AVAudioPlayer(contentsOf: url)
+            player.volume = breathingVolume
+            player.play()
+            sfxPlayer = player
+        } catch {
+            print("AudioService breath error: \(error)")
+        }
+    }
+
     func playPing() { playSFX(resource: "ping") }
     func playGong() { playSFX(resource: "gong") }
+    func playWarning() { playSFX(resource: "warning") }
 
     private func playSFX(resource: String) {
-        guard let url = Bundle.main.url(forResource: resource, withExtension: "m4a", subdirectory: "Audio/SFX") else {
+        guard let url = Bundle.main.url(forResource: resource, withExtension: "m4a") else {
             return
         }
         do {
@@ -182,10 +276,12 @@ final class AudioService: AudioServiceProtocol, @unchecked Sendable {
 
     func stopAll() {
         musicPlayer?.stop()
+        previewPlayer?.stop()
         guidancePlayer?.stop()
         sfxPlayer?.stop()
         speechSynth?.stopSpeaking(at: .immediate)
         musicPlayer = nil
+        previewPlayer = nil
         guidancePlayer = nil
         sfxPlayer = nil
         speechSynth = nil
