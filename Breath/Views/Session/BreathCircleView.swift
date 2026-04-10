@@ -10,25 +10,50 @@ struct BreathCircleView: View {
 
     var body: some View {
         ZStack {
+            // Vnější glow — intenzita roste se scale.
+            Circle()
+                .fill(
+                    RadialGradient(
+                        colors: [color.opacity(0.35), color.opacity(0.0)],
+                        center: .center,
+                        startRadius: 60,
+                        endRadius: 200
+                    )
+                )
+                .frame(width: 340, height: 340)
+                .scaleEffect(scale)
+                .blur(radius: 16)
+
+            // Základní výplň.
             Circle()
                 .fill(color.opacity(0.15))
                 .frame(width: 280, height: 280)
                 .scaleEffect(scale)
-                .shadow(color: color.opacity(0.5), radius: 40 * scale, x: 0, y: 0)
+                .shadow(color: color.opacity(0.55 * Double(scale)), radius: 50 * scale, x: 0, y: 0)
 
+            // Obrys.
             Circle()
-                .stroke(color, lineWidth: 3)
+                .stroke(
+                    LinearGradient(
+                        colors: [color, color.opacity(0.6)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    ),
+                    lineWidth: 3
+                )
                 .frame(width: 280, height: 280)
                 .scaleEffect(scale)
 
-            VStack(spacing: 8) {
+            // Obsah (zůstává staticky centrovaný, bez scale).
+            VStack(spacing: 10) {
                 Text(centerText)
                     .font(.system(size: 64, weight: .bold, design: .rounded))
                     .foregroundStyle(Constants.Palette.primaryTeal)
                     .monospacedDigit()
+                    .contentTransition(.numericText())
                 if let label {
                     Text(label)
-                        .font(.system(size: 14, weight: .semibold))
+                        .font(.system(size: 14, weight: .semibold, design: .rounded))
                         .tracking(2)
                         .textCase(.uppercase)
                         .foregroundStyle(Constants.Palette.textSecondary)

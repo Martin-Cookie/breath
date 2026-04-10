@@ -15,6 +15,9 @@ struct SessionView: View {
                 topBar
                 Spacer()
                 phaseContent
+                    .id(viewModel.phase)
+                    .transition(.opacity.combined(with: .scale(scale: 0.95)))
+                    .animation(.easeInOut(duration: 0.4), value: viewModel.phase)
                 Spacer()
                 Spacer()
             }

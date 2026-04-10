@@ -20,8 +20,12 @@ final class AudioService: AudioServiceProtocol {
     private var sfxPlayer: AVAudioPlayer?
     private var speechSynth: AVSpeechSynthesizer?
 
+    /// Název stopy, která hrála před interruptem — pro případný resume.
+    private var musicTrackBeforeInterruption: String?
+
     private init() {
         configureAudioSession()
+        observeInterruptions()
     }
 
     private func configureAudioSession() {
@@ -31,6 +35,63 @@ final class AudioService: AudioServiceProtocol {
         } catch {
             print("AudioService session error: \(error)")
         }
+    }
+
+    // MARK: - Interruption handling
+
+    private func observeInterruptions() {
+        let center = NotificationCenter.default
+        center.addObserver(
+            self,
+            selector: #selector(handleInterruption(_:)),
+            name: AVAudioSession.interruptionNotification,
+            object: AVAudioSession.sharedInstance()
+        )
+        center.addObserver(
+            self,
+            selector: #selector(handleRouteChange(_:)),
+            name: AVAudioSession.routeChangeNotification,
+            object: AVAudioSession.sharedInstance()
+        )
+    }
+
+    @objc private func handleInterruption(_ notification: Notification) {
+        guard let info = notification.userInfo,
+              let typeValue = info[AVAudioSessionInterruptionTypeKey] as? UInt,
+              let type = AVAudioSession.InterruptionType(rawValue: typeValue)
+        else { return }
+
+        switch type {
+        case .began:
+            // Hovor / Siri / alarm — pauza hudby.
+            musicPlayer?.pause()
+        case .ended:
+            guard let optionsValue = info[AVAudioSessionInterruptionOptionKey] as? UInt else { return }
+            let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
+            if options.contains(.shouldResume) {
+                // Zkusit obnovit přehrávání — session už může být neaktivní.
+                try? AVAudioSession.sharedInstance().setActive(true)
+                musicPlayer?.play()
+            }
+        @unknown default:
+            break
+        }
+    }
+
+    @objc private func handleRouteChange(_ notification: Notification) {
+        guard let info = notification.userInfo,
+              let reasonValue = info[AVAudioSessionRouteChangeReasonKey] as? UInt,
+              let reason = AVAudioSession.RouteChangeReason(rawValue: reasonValue)
+        else { return }
+
+        // Uživatel odpojil sluchátka — pauza (jinak by hudba začala hrát z reproduktoru).
+        if reason == .oldDeviceUnavailable {
+            musicPlayer?.pause()
+        }
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: - Music
