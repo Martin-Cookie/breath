@@ -2,33 +2,10 @@ import SwiftUI
 
 struct ConfigurationView: View {
     @EnvironmentObject private var store: StoreService
-
-    @AppStorage(SettingsKey.speed) private var speedRaw: String = BreathingSpeed.standard.rawValue
-    @AppStorage(SettingsKey.rounds) private var rounds: Int = 3
-    @AppStorage(SettingsKey.breathsBeforeRetention) private var breaths: Int = 35
-
-    @AppStorage(SettingsKey.backgroundMusicEnabled) private var backgroundMusicEnabled: Bool = true
-    @AppStorage(SettingsKey.breathingPhaseMusic) private var breathingPhaseMusic: Bool = true
-    @AppStorage(SettingsKey.breathingPhaseMusicTrack) private var breathingPhaseMusicTrack: String = "sweet_and_spicy"
-    @AppStorage(SettingsKey.retentionPhaseMusic) private var retentionPhaseMusic: Bool = true
-    @AppStorage(SettingsKey.retentionPhaseMusicTrack) private var retentionPhaseMusicTrack: String = "sweet_and_spicy"
-
-    @AppStorage(SettingsKey.guidanceEnabled) private var guidanceEnabled: Bool = true
-    @AppStorage(SettingsKey.breathingPhaseGuidance) private var breathingPhaseGuidance: Bool = true
-    @AppStorage(SettingsKey.breathingPhaseGuidanceStyle) private var breathingPhaseGuidanceStyle: String = "classic"
-    @AppStorage(SettingsKey.retentionPhaseGuidance) private var retentionPhaseGuidance: Bool = true
-    @AppStorage(SettingsKey.retentionPhaseGuidanceStyle) private var retentionPhaseGuidanceStyle: String = "classic"
-
-    @AppStorage(SettingsKey.breathingSounds) private var breathingSounds: Bool = true
-    @AppStorage(SettingsKey.hapticFeedback) private var hapticFeedback: Bool = false
-    @AppStorage(SettingsKey.pingAndGong) private var pingAndGong: Bool = true
+    @StateObject private var vm = ConfigurationViewModel()
 
     @State private var showPaywall = false
     @State private var sessionViewModel: SessionViewModel?
-
-    private var speed: BreathingSpeed {
-        BreathingSpeed(rawValue: speedRaw) ?? .standard
-    }
 
     var body: some View {
         NavigationStack {
@@ -36,40 +13,38 @@ struct ConfigurationView: View {
                 VStack(alignment: .leading, spacing: 20) {
                     SpeedSelector(
                         selection: Binding(
-                            get: { speed },
+                            get: { vm.speed },
                             set: { newValue in
-                                if newValue.isPremium && !store.isPremium {
+                                if !vm.setSpeed(newValue, isPremium: store.isPremium) {
                                     showPaywall = true
-                                } else {
-                                    speedRaw = newValue.rawValue
                                 }
                             }
                         )
                     )
 
-                    RoundsSelector(selection: $rounds)
-                    BreathsSelector(selection: $breaths)
+                    RoundsSelector(selection: $vm.rounds)
+                    BreathsSelector(selection: $vm.breathsBeforeRetention)
 
                     MusicSettingsSection(
-                        enabled: $backgroundMusicEnabled,
-                        breathingEnabled: $breathingPhaseMusic,
-                        breathingTrack: $breathingPhaseMusicTrack,
-                        retentionEnabled: $retentionPhaseMusic,
-                        retentionTrack: $retentionPhaseMusicTrack
+                        enabled: $vm.backgroundMusicEnabled,
+                        breathingEnabled: $vm.breathingPhaseMusic,
+                        breathingTrack: $vm.breathingPhaseMusicTrack,
+                        retentionEnabled: $vm.retentionPhaseMusic,
+                        retentionTrack: $vm.retentionPhaseMusicTrack
                     )
 
                     GuidanceSettingsSection(
-                        enabled: $guidanceEnabled,
-                        breathingEnabled: $breathingPhaseGuidance,
-                        breathingStyle: $breathingPhaseGuidanceStyle,
-                        retentionEnabled: $retentionPhaseGuidance,
-                        retentionStyle: $retentionPhaseGuidanceStyle
+                        enabled: $vm.guidanceEnabled,
+                        breathingEnabled: $vm.breathingPhaseGuidance,
+                        breathingStyle: $vm.breathingPhaseGuidanceStyle,
+                        retentionEnabled: $vm.retentionPhaseGuidance,
+                        retentionStyle: $vm.retentionPhaseGuidanceStyle
                     )
 
                     ExtraSettingsSection(
-                        breathingSounds: $breathingSounds,
-                        hapticFeedback: $hapticFeedback,
-                        pingAndGong: $pingAndGong
+                        breathingSounds: $vm.breathingSounds,
+                        hapticFeedback: $vm.hapticFeedback,
+                        pingAndGong: $vm.pingAndGong
                     )
 
                     Button(action: startSession) {
@@ -97,32 +72,14 @@ struct ConfigurationView: View {
             .sheet(isPresented: $showPaywall) {
                 PaywallView()
             }
-            .fullScreenCover(item: $sessionViewModel) { vm in
-                SessionView(viewModel: vm)
+            .fullScreenCover(item: $sessionViewModel) { svm in
+                SessionView(viewModel: svm)
             }
         }
     }
 
     private func startSession() {
-        let config = SessionConfiguration(
-            speed: speed,
-            rounds: rounds,
-            breathsBeforeRetention: breaths,
-            backgroundMusicEnabled: backgroundMusicEnabled,
-            breathingPhaseMusic: breathingPhaseMusic,
-            breathingPhaseMusicTrack: breathingPhaseMusicTrack,
-            retentionPhaseMusic: retentionPhaseMusic,
-            retentionPhaseMusicTrack: retentionPhaseMusicTrack,
-            guidanceEnabled: guidanceEnabled,
-            breathingPhaseGuidance: breathingPhaseGuidance,
-            breathingPhaseGuidanceStyle: breathingPhaseGuidanceStyle,
-            retentionPhaseGuidance: retentionPhaseGuidance,
-            retentionPhaseGuidanceStyle: retentionPhaseGuidanceStyle,
-            breathingSounds: breathingSounds,
-            hapticFeedback: hapticFeedback,
-            pingAndGong: pingAndGong
-        )
-        sessionViewModel = SessionViewModel(configuration: config)
+        sessionViewModel = SessionViewModel(configuration: vm.makeSessionConfiguration())
     }
 }
 

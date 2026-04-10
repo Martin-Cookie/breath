@@ -9,12 +9,12 @@ struct GuidanceSettingsSection: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Toggle("Guidance", isOn: $enabled)
+            Toggle(String(localized: "config.guidance.title"), isOn: $enabled)
                 .tint(Constants.Palette.primaryTeal)
                 .font(.headline)
 
             if enabled {
-                Toggle("Breathing phase", isOn: $breathingEnabled)
+                Toggle(String(localized: "config.guidance.breathing"), isOn: $breathingEnabled)
                     .tint(Constants.Palette.primaryTeal)
                 if breathingEnabled {
                     Text(breathingStyle.capitalized)
@@ -23,7 +23,7 @@ struct GuidanceSettingsSection: View {
                         .padding(.leading, 16)
                 }
 
-                Toggle("Retention phase", isOn: $retentionEnabled)
+                Toggle(String(localized: "config.guidance.retention"), isOn: $retentionEnabled)
                     .tint(Constants.Palette.primaryTeal)
                 if retentionEnabled {
                     Text(retentionStyle.capitalized)

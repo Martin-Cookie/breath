@@ -7,9 +7,9 @@ struct ExtraSettingsSection: View {
 
     var body: some View {
         VStack(spacing: 12) {
-            Toggle("Breathing sounds", isOn: $breathingSounds)
-            Toggle("Haptic feedback", isOn: $hapticFeedback)
-            Toggle("Ping and Gong", isOn: $pingAndGong)
+            Toggle(String(localized: "config.extras.breathing_sounds"), isOn: $breathingSounds)
+            Toggle(String(localized: "config.extras.haptic"), isOn: $hapticFeedback)
+            Toggle(String(localized: "config.extras.ping_gong"), isOn: $pingAndGong)
         }
         .tint(Constants.Palette.primaryTeal)
         .padding()

@@ -7,7 +7,7 @@ struct NotificationSettingsView: View {
 
     var body: some View {
         Form {
-            Toggle("Daily reminder", isOn: $enabled)
+            Toggle(String(localized: "notifications.daily_reminder"), isOn: $enabled)
                 .tint(Constants.Palette.primaryTeal)
                 .onChange(of: enabled) { _, newValue in
                     if newValue {
@@ -26,7 +26,7 @@ struct NotificationSettingsView: View {
 
             if enabled {
                 DatePicker(
-                    "Time",
+                    String(localized: "notifications.time"),
                     selection: Binding(
                         get: {
                             var components = DateComponents()
@@ -45,6 +45,6 @@ struct NotificationSettingsView: View {
                 )
             }
         }
-        .navigationTitle("Notifications")
+        .navigationTitle(String(localized: "notifications.title"))
     }
 }

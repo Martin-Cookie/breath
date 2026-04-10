@@ -49,15 +49,15 @@ struct SessionView: View {
             }
         }
         .confirmationDialog(
-            "Opravdu chcete ukončit cvičení?",
+            String(localized: "session.cancel_confirm"),
             isPresented: $showCancelDialog,
             titleVisibility: .visible
         ) {
-            Button("Ukončit", role: .destructive) {
+            Button(String(localized: "session.cancel_end"), role: .destructive) {
                 viewModel.cancel()
                 dismiss()
             }
-            Button("Pokračovat", role: .cancel) {}
+            Button(String(localized: "session.cancel_continue"), role: .cancel) {}
         }
     }
 
@@ -69,7 +69,7 @@ struct SessionView: View {
                     .foregroundStyle(Constants.Palette.primaryTeal)
             }
             Spacer()
-            Text("Round \(viewModel.currentRound)/\(viewModel.configuration.rounds)")
+            Text(String(format: String(localized: "session.round_of"), viewModel.currentRound, viewModel.configuration.rounds))
                 .font(.headline)
                 .foregroundStyle(Constants.Palette.primaryTeal)
         }

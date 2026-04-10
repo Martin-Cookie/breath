@@ -9,12 +9,12 @@ struct MusicSettingsSection: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Toggle("Background music", isOn: $enabled)
+            Toggle(String(localized: "config.music.title"), isOn: $enabled)
                 .tint(Constants.Palette.primaryTeal)
                 .font(.headline)
 
             if enabled {
-                Toggle("Breathing phase music", isOn: $breathingEnabled)
+                Toggle(String(localized: "config.music.breathing"), isOn: $breathingEnabled)
                     .tint(Constants.Palette.primaryTeal)
                 if breathingEnabled {
                     Text(breathingTrack.replacingOccurrences(of: "_", with: " ").capitalized)
@@ -23,7 +23,7 @@ struct MusicSettingsSection: View {
                         .padding(.leading, 16)
                 }
 
-                Toggle("Retention phase music", isOn: $retentionEnabled)
+                Toggle(String(localized: "config.music.retention"), isOn: $retentionEnabled)
                     .tint(Constants.Palette.primaryTeal)
                 if retentionEnabled {
                     Text(retentionTrack.replacingOccurrences(of: "_", with: " ").capitalized)

@@ -156,6 +156,102 @@
         "cs" : { "stringUnit" : { "state" : "translated", "value" : "Neztrácej svůj %d denní streak!" } },
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Don't lose your %d-day streak!" } }
       }
+    },
+    "config.music.title" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Hudba na pozadí" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Background music" } }
+      }
+    },
+    "config.music.breathing" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Hudba při dýchání" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Breathing phase music" } }
+      }
+    },
+    "config.music.retention" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Hudba při zadržení" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Retention phase music" } }
+      }
+    },
+    "config.guidance.title" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Hlasové vedení" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Guidance" } }
+      }
+    },
+    "config.guidance.breathing" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Fáze dýchání" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Breathing phase" } }
+      }
+    },
+    "config.guidance.retention" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Fáze zadržení" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Retention phase" } }
+      }
+    },
+    "config.extras.breathing_sounds" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Zvuky dýchání" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Breathing sounds" } }
+      }
+    },
+    "config.extras.haptic" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Vibrace" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Haptic feedback" } }
+      }
+    },
+    "config.extras.ping_gong" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Ping a gong" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ping and Gong" } }
+      }
+    },
+    "session.round_of" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Kolo %d z %d" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Round %d of %d" } }
+      }
+    },
+    "session.cancel_confirm" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Opravdu chcete ukončit cvičení?" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "End session?" } }
+      }
+    },
+    "session.cancel_end" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Ukončit" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "End" } }
+      }
+    },
+    "session.cancel_continue" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Pokračovat" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Continue" } }
+      }
+    },
+    "notifications.title" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Notifikace" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Notifications" } }
+      }
+    },
+    "notifications.daily_reminder" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Denní připomínka" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daily reminder" } }
+      }
+    },
+    "notifications.time" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Čas" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Time" } }
+      }
     }
   },
   "version" : "1.0"
