@@ -45,5 +45,7 @@ jobs:
             -scheme Breath \
             -destination 'platform=iOS Simulator,name=iPhone 16' \
             -configuration Debug \
+            -testLanguage cs \
+            -testRegion cs_CZ \
             CODE_SIGNING_ALLOWED=NO \
             test
