@@ -22,7 +22,7 @@ struct OnboardingView: View {
                         color: Constants.Palette.tealLight,
                         title: String(localized: "onboarding.welcome.title"),
                         subtitle: String(localized: "onboarding.welcome.subtitle"),
-                        body: String(localized: "onboarding.welcome.body")
+                        text: String(localized: "onboarding.welcome.body")
                     )
                     .tag(0)
 
@@ -31,7 +31,7 @@ struct OnboardingView: View {
                         color: Constants.Palette.accentOrange,
                         title: String(localized: "onboarding.safety.title"),
                         subtitle: String(localized: "onboarding.safety.subtitle"),
-                        body: String(localized: "onboarding.safety.body")
+                        text: String(localized: "onboarding.safety.body")
                     )
                     .tag(1)
 
@@ -40,7 +40,7 @@ struct OnboardingView: View {
                         color: Constants.Palette.accentGreen,
                         title: String(localized: "onboarding.notifications.title"),
                         subtitle: String(localized: "onboarding.notifications.subtitle"),
-                        body: String(localized: "onboarding.notifications.body")
+                        text: String(localized: "onboarding.notifications.body")
                     )
                     .tag(2)
                 }
@@ -90,7 +90,7 @@ private struct OnboardingPage: View {
     let color: Color
     let title: String
     let subtitle: String
-    let body: String
+    let text: String
 
     var body: some View {
         VStack(spacing: 28) {
@@ -115,7 +115,7 @@ private struct OnboardingPage: View {
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
 
-                Text(body)
+                Text(text)
                     .font(.system(size: 15, design: .rounded))
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
