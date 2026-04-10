@@ -33,7 +33,7 @@ jobs:
           xcodebuild \
             -project Breath.xcodeproj \
             -scheme Breath \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO \
             build
@@ -43,7 +43,7 @@ jobs:
           xcodebuild \
             -project Breath.xcodeproj \
             -scheme Breath \
-            -destination 'platform=iOS Simulator,name=iPhone 16,OS=18.2' \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
             -configuration Debug \
             CODE_SIGNING_ALLOWED=NO \
             test
