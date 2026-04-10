@@ -1,136 +1,618 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "config.title" : {
+    "%@" : {
+
+    },
+    "%@ kol • avg %@" : {
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Řízené dýchání" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Guided Breathing" } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ kol • avg %2$@"
+          }
+        }
       }
     },
-    "config.speed.slow" : {
+    "%@ rounds • %@ total" : {
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Pomalé" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Slow" } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ rounds • %2$@ total"
+          }
+        }
       }
     },
-    "config.speed.standard" : {
+    "%@%@" : {
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Standardní" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Standard" } }
-      }
-    },
-    "config.speed.fast" : {
-      "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Rychlé" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Fast" } }
-      }
-    },
-    "config.rounds" : {
-      "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Kola:" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Rounds:" } }
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@%2$@"
+          }
+        }
       }
     },
     "config.breaths" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nádechů:" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Breaths:" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nádechů:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breaths:"
+          }
+        }
+      }
+    },
+    "config.extras.breathing_sounds" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zvuky dýchání"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathing sounds"
+          }
+        }
+      }
+    },
+    "config.extras.haptic" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vibrace"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Haptic feedback"
+          }
+        }
+      }
+    },
+    "config.extras.ping_gong" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ping a gong"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ping and Gong"
+          }
+        }
+      }
+    },
+    "config.guidance.breathing" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fáze dýchání"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathing phase"
+          }
+        }
+      }
+    },
+    "config.guidance.retention" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fáze zadržení"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retention phase"
+          }
+        }
+      }
+    },
+    "config.guidance.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hlasové vedení"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guidance"
+          }
+        }
+      }
+    },
+    "config.music.breathing" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hudba při dýchání"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathing phase music"
+          }
+        }
+      }
+    },
+    "config.music.retention" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hudba při zadržení"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retention phase music"
+          }
+        }
+      }
+    },
+    "config.music.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hudba na pozadí"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Background music"
+          }
+        }
+      }
+    },
+    "config.rounds" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kola:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rounds:"
+          }
+        }
+      }
+    },
+    "config.speed.fast" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rychlé"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fast"
+          }
+        }
+      }
+    },
+    "config.speed.slow" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pomalé"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Slow"
+          }
+        }
+      }
+    },
+    "config.speed.standard" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standardní"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Standard"
+          }
+        }
       }
     },
     "config.start" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Start" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        }
       }
     },
-    "session.breathe_in" : {
+    "config.title" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "NADECHNĚTE" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "BREATHE IN" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Řízené dýchání"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guided Breathing"
+          }
+        }
       }
     },
-    "session.breathe_out" : {
+    "Historie" : {
+
+    },
+    "notification.reminder" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "VYDECHNĚTE" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "BREATHE OUT" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Čas na dýchání!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time to breathe!"
+          }
+        }
       }
     },
-    "session.hold" : {
+    "notification.streak_warning" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "ZADRŽTE" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "HOLD" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neztrácej svůj %d denní streak!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't lose your %d-day streak!"
+          }
+        }
       }
     },
-    "session.tap_to_breathe" : {
+    "notifications.daily_reminder" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Tapněte pro nádech" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Tap anywhere to breathe" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Denní připomínka"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily reminder"
+          }
+        }
       }
     },
-    "results.complete" : {
+    "notifications.time" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Cvičení dokončeno" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Session Complete" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Čas"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time"
+          }
+        }
       }
     },
-    "results.best" : {
+    "notifications.title" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nejlepší" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Best" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifikace"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
+          }
+        }
       }
     },
-    "results.average" : {
+    "onboarding.next" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Průměr" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Average" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokračovat"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        }
       }
     },
-    "results.done" : {
+    "onboarding.notifications.body" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Hotovo" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pošleme ti každé ráno připomínku, ať na cvičení nezapomeneš. Čas můžeš kdykoliv změnit v nastavení."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We'll remind you each morning so you don't skip a day. You can change the time anytime in settings."
+          }
+        }
       }
     },
-    "results.share" : {
+    "onboarding.notifications.subtitle" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Sdílet" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Share" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pravidelnost dělá rozdíl"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consistency is key"
+          }
+        }
       }
     },
-    "stats.title" : {
+    "onboarding.notifications.title" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Statistiky" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Statistics" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Denní připomínka"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily reminder"
+          }
+        }
       }
     },
-    "stats.sessions" : {
+    "onboarding.safety.body" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Relace" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sessions" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nikdy necvič ve vodě ani při řízení. Při závratích okamžitě přestaň. Pokud máš zdravotní potíže, poraď se s lékařem."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Never practice in water or while driving. Stop if you feel dizzy. Consult a doctor if you have health conditions."
+          }
+        }
       }
     },
-    "stats.total_time" : {
+    "onboarding.safety.subtitle" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Celkový čas" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Total time" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cvič vždy vsedě nebo vleže"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Always practice sitting or lying down"
+          }
+        }
       }
     },
-    "stats.current_streak" : {
+    "onboarding.safety.title" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Streak" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Current streak" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bezpečnost především"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Safety first"
+          }
+        }
       }
     },
-    "stats.best_streak" : {
+    "onboarding.start" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nejdelší streak" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Best streak" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Začít cvičit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start practicing"
+          }
+        }
+      }
+    },
+    "onboarding.welcome.body" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cvičení probíhá v kolech: 30–40 hlubokých nádechů, pak výdech a zadržení dechu. Na konci kola se zhluboka nadechneš a krátce podržíš."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Each round: 30–40 deep breaths, then exhale and hold. At the end, inhale deeply and briefly hold."
+          }
+        }
+      }
+    },
+    "onboarding.welcome.subtitle" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Řízené dýchání inspirované Wim Hof metodou"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guided breathing inspired by the Wim Hof Method"
+          }
+        }
+      }
+    },
+    "onboarding.welcome.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vítej v Breath"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to Breath"
+          }
+        }
+      }
+    },
+    "paywall.restore" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obnovit nákupy"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore purchases"
+          }
+        }
       }
     },
     "paywall.title" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Odemknout Breath Pro" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unlock Breath Pro" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odemknout Breath Pro"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlock Breath Pro"
+          }
+        }
       }
     },
     "paywall.upgrade" : {
@@ -139,281 +621,665 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "Upgrade" } }
       }
     },
-    "paywall.restore" : {
+    "paywall.upgrade_with_price" : {
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Obnovit nákupy" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Restore purchases" } }
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Upgradovat — %@" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Upgrade — %@" } }
       }
     },
-    "notification.reminder" : {
+    "paywall.subtitle" : {
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Čas na dýchání!" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Time to breathe!" } }
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Jednorázový nákup. Bez předplatného, bez reklam." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "One-time purchase. No subscription, no ads." } }
       }
     },
-    "notification.streak_warning" : {
+    "paywall.feature.speeds" : {
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Neztrácej svůj %d denní streak!" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Don't lose your %d-day streak!" } }
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Všechny rychlosti dýchání" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "All breathing speeds" } }
       }
     },
-    "config.music.title" : {
+    "paywall.feature.music_guidance" : {
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Hudba na pozadí" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Background music" } }
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Všechny hudby a hlasové vedení" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "All music & guidance styles" } }
       }
     },
-    "config.music.breathing" : {
+    "paywall.feature.history" : {
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Hudba při dýchání" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Breathing phase music" } }
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Kompletní historie a grafy" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Full history & charts" } }
       }
     },
-    "config.music.retention" : {
+    "paywall.feature.widget" : {
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Hudba při zadržení" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Retention phase music" } }
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Widget na home screen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Home screen widget" } }
       }
     },
-    "config.guidance.title" : {
+    "paywall.feature.share" : {
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Hlasové vedení" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Guidance" } }
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Sdílení výsledků" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Share results" } }
       }
     },
-    "config.guidance.breathing" : {
+    "paywall.legal" : {
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Fáze dýchání" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Breathing phase" } }
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Platba proběhne přes tvůj App Store účet. Jednorázový nákup, žádné opakované platby." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Payment will be charged to your App Store account. One-time purchase, no recurring charges." } }
       }
     },
-    "config.guidance.retention" : {
+    "paywall.error_title" : {
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Fáze zadržení" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Retention phase" } }
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nákup se nezdařil" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Purchase failed" } }
       }
     },
-    "config.extras.breathing_sounds" : {
+    "paywall.ok" : {
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Zvuky dýchání" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Breathing sounds" } }
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "OK" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "OK" } }
       }
     },
-    "config.extras.haptic" : {
+    "results.average" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Vibrace" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Haptic feedback" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Průměr"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Average"
+          }
+        }
       }
     },
-    "config.extras.ping_gong" : {
+    "results.best" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Ping a gong" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Ping and Gong" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nejlepší"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Best"
+          }
+        }
       }
     },
-    "session.round_of" : {
+    "results.complete" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Kolo %d z %d" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Round %d of %d" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cvičení dokončeno"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Session Complete"
+          }
+        }
+      }
+    },
+    "results.done" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hotovo"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "results.share" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sdílet"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share"
+          }
+        }
+      }
+    },
+    "Retention Time" : {
+
+    },
+    "Round %@" : {
+
+    },
+    "ROUND %@ OF %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "ROUND %1$@ OF %2$@"
+          }
+        }
+      }
+    },
+    "session.breathe_in" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "NADECHNĚTE"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BREATHE IN"
+          }
+        }
+      }
+    },
+    "session.breathe_out" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "VYDECHNĚTE"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "BREATHE OUT"
+          }
+        }
       }
     },
     "session.cancel_confirm" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Opravdu chcete ukončit cvičení?" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "End session?" } }
-      }
-    },
-    "session.cancel_end" : {
-      "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Ukončit" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "End" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opravdu chcete ukončit cvičení?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End session?"
+          }
+        }
       }
     },
     "session.cancel_continue" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Pokračovat" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Continue" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokračovat"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        }
       }
     },
-    "notifications.title" : {
+    "session.cancel_end" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Notifikace" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Notifications" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ukončit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End"
+          }
+        }
       }
     },
-    "notifications.daily_reminder" : {
+    "session.hold" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Denní připomínka" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daily reminder" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ZADRŽTE"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "HOLD"
+          }
+        }
       }
     },
-    "notifications.time" : {
+    "session.round_of" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Čas" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Time" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kolo %d z %d"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Round %d of %d"
+          }
+        }
       }
     },
-    "settings.title" : {
+    "session.tap_to_breathe" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nastavení" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Settings" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tapněte pro nádech"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap anywhere to breathe"
+          }
+        }
       }
     },
     "settings.done" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Hotovo" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Done" } }
-      }
-    },
-    "settings.section.notifications" : {
-      "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Připomínky" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reminders" } }
-      }
-    },
-    "settings.section.subscription" : {
-      "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Předplatné" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Subscription" } }
-      }
-    },
-    "settings.section.data" : {
-      "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Data" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Data" } }
-      }
-    },
-    "settings.section.about" : {
-      "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "O aplikaci" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "About" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hotovo"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
       }
     },
     "settings.premium_active" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Premium aktivní" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Premium active" } }
-      }
-    },
-    "settings.unlock_premium" : {
-      "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Odemknout Premium" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Unlock Premium" } }
-      }
-    },
-    "settings.restore_purchases" : {
-      "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Obnovit nákupy" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Restore purchases" } }
-      }
-    },
-    "settings.reset_data" : {
-      "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Smazat všechna data" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reset all data" } }
-      }
-    },
-    "settings.reset_confirm_title" : {
-      "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Opravdu smazat všechna data?" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Reset all data?" } }
-      }
-    },
-    "settings.reset_confirm_message" : {
-      "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Tato akce nevratně smaže všechny tvoje session a statistiky." } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "This will permanently delete all your sessions and stats." } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium aktivní"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Premium active"
+          }
+        }
       }
     },
     "settings.reset_confirm" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Smazat" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Delete" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smazat"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        }
       }
     },
-    "settings.version" : {
+    "settings.reset_confirm_message" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Verze" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Version" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tato akce nevratně smaže všechny tvoje session a statistiky."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This will permanently delete all your sessions and stats."
+          }
+        }
       }
     },
-    "settings.wim_hof_link" : {
+    "settings.reset_confirm_title" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Wim Hof Method" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Wim Hof Method" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opravdu smazat všechna data?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset all data?"
+          }
+        }
+      }
+    },
+    "settings.reset_data" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Smazat všechna data"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset all data"
+          }
+        }
+      }
+    },
+    "settings.restore_purchases" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obnovit nákupy"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restore purchases"
+          }
+        }
       }
     },
     "settings.safety_disclaimer" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nikdy necvič ve vodě ani při řízení. Při závratích okamžitě přestaň a normálně dýchej. Pokud máš zdravotní potíže, poraď se s lékařem." } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Never practice in water or while driving. Stop immediately and breathe normally if you feel dizzy. Consult a doctor if you have health conditions." } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nikdy necvič ve vodě ani při řízení. Při závratích okamžitě přestaň a normálně dýchej. Pokud máš zdravotní potíže, poraď se s lékařem."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Never practice in water or while driving. Stop immediately and breathe normally if you feel dizzy. Consult a doctor if you have health conditions."
+          }
+        }
       }
     },
-    "onboarding.next" : {
+    "settings.section.about" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Pokračovat" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Continue" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O aplikaci"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        }
       }
     },
-    "onboarding.start" : {
+    "settings.section.data" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Začít cvičit" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start practicing" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
+        }
       }
     },
-    "onboarding.welcome.title" : {
+    "settings.section.notifications" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Vítej v Breath" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Welcome to Breath" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Připomínky"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reminders"
+          }
+        }
       }
     },
-    "onboarding.welcome.subtitle" : {
+    "settings.section.subscription" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Řízené dýchání inspirované Wim Hof metodou" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Guided breathing inspired by the Wim Hof Method" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Předplatné"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subscription"
+          }
+        }
       }
     },
-    "onboarding.welcome.body" : {
+    "settings.title" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Cvičení probíhá v kolech: 30–40 hlubokých nádechů, pak výdech a zadržení dechu. Na konci kola se zhluboka nadechneš a krátce podržíš." } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Each round: 30–40 deep breaths, then exhale and hold. At the end, inhale deeply and briefly hold." } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nastavení"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        }
       }
     },
-    "onboarding.safety.title" : {
+    "settings.unlock_premium" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Bezpečnost především" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Safety first" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odemknout Premium"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unlock Premium"
+          }
+        }
       }
     },
-    "onboarding.safety.subtitle" : {
+    "settings.version" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Cvič vždy vsedě nebo vleže" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Always practice sitting or lying down" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verze"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Version"
+          }
+        }
       }
     },
-    "onboarding.safety.body" : {
+    "settings.wim_hof_link" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nikdy necvič ve vodě ani při řízení. Při závratích okamžitě přestaň. Pokud máš zdravotní potíže, poraď se s lékařem." } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Never practice in water or while driving. Stop if you feel dizzy. Consult a doctor if you have health conditions." } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wim Hof Method"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wim Hof Method"
+          }
+        }
       }
     },
-    "onboarding.notifications.title" : {
+    "stats.best_streak" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Denní připomínka" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daily reminder" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nejdelší streak"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Best streak"
+          }
+        }
       }
     },
-    "onboarding.notifications.subtitle" : {
+    "stats.current_streak" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Pravidelnost dělá rozdíl" } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "Consistency is key" } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Streak"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Current streak"
+          }
+        }
       }
     },
-    "onboarding.notifications.body" : {
+    "stats.sessions" : {
+      "extractionState" : "stale",
       "localizations" : {
-        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Pošleme ti každé ráno připomínku, ať na cvičení nezapomeneš. Čas můžeš kdykoliv změnit v nastavení." } },
-        "en" : { "stringUnit" : { "state" : "translated", "value" : "We'll remind you each morning so you don't skip a day. You can change the time anytime in settings." } }
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Relace"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sessions"
+          }
+        }
       }
+    },
+    "stats.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistiky"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Statistics"
+          }
+        }
+      }
+    },
+    "stats.total_time" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celkový čas"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total time"
+          }
+        }
+      }
+    },
+    "Tap to continue" : {
+
+    },
+    "Žádná data" : {
+
     }
   },
   "version" : "1.0"
