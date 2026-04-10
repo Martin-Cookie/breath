@@ -31,7 +31,9 @@ targets:
         CFBundleDisplayName: Breath
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
-        UILaunchScreen: {}
+        UILaunchScreen:
+          UIColorName: LaunchBackground
+          UIImageName: LaunchLogo
         UISupportedInterfaceOrientations:
           - UIInterfaceOrientationPortrait
         NSUserNotificationsUsageDescription: Breath používá notifikace pro denní připomínky cvičení.
