@@ -23,12 +23,17 @@ final class SessionViewModelTests: XCTestCase {
             breathingPhaseMusicTrack: "sweet_and_spicy",
             retentionPhaseMusic: false,
             retentionPhaseMusicTrack: "sweet_and_spicy",
+            musicVolume: 0.5,
             guidanceEnabled: false,
             breathingPhaseGuidance: false,
             breathingPhaseGuidanceStyle: "classic",
             retentionPhaseGuidance: false,
             retentionPhaseGuidanceStyle: "classic",
+            guidanceVolume: 1.0,
+            retentionAnnounceInterval: 0,
             breathingSounds: true,
+            breathingSoundsVoice: "male",
+            breathingSoundsVolume: 1.0,
             hapticFeedback: true,
             pingAndGong: true
         )
@@ -88,8 +93,8 @@ final class SessionViewModelTests: XCTestCase {
 
         try await Task.sleep(nanoseconds: 3_000_000_000)
 
-        XCTAssertTrue(audio.calls.contains(.playBreathingIn))
-        XCTAssertTrue(audio.calls.contains(.playBreathingOut))
+        XCTAssertTrue(audio.calls.contains(.playBreathingIn("male")))
+        XCTAssertTrue(audio.calls.contains(.playBreathingOut("male")))
     }
 
     func testHapticIsFiredOnInhaleWhenEnabled() async throws {
