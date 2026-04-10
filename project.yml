@@ -57,6 +57,20 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: cz.martinkoci.breath.tests
         GENERATE_INFOPLIST_FILE: YES
 
+  BreathUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: BreathUITests
+    dependencies:
+      - target: Breath
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: cz.martinkoci.breath.uitests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_TARGET_NAME: Breath
+
   BreathWidget:
     type: app-extension
     platform: iOS
@@ -83,12 +97,14 @@ schemes:
         Breath: all
         BreathWidget: all
         BreathTests: [test]
+        BreathUITests: [test]
     run:
       config: Debug
     test:
       config: Debug
       targets:
         - BreathTests
+        - BreathUITests
     profile:
       config: Release
     analyze:
