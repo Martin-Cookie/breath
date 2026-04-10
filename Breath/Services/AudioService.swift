@@ -1,7 +1,7 @@
 import Foundation
 import AVFoundation
 
-protocol AudioServiceProtocol {
+protocol AudioServiceProtocol: Sendable {
     func playMusic(track: String)
     func stopMusic()
     func playGuidance(key: String, style: String)
@@ -12,7 +12,7 @@ protocol AudioServiceProtocol {
     func stopAll()
 }
 
-final class AudioService: AudioServiceProtocol {
+final class AudioService: AudioServiceProtocol, @unchecked Sendable {
     static let shared = AudioService()
 
     private var musicPlayer: AVAudioPlayer?

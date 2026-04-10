@@ -110,5 +110,5 @@ struct ConfigurationView: View {
 }
 
 extension SessionViewModel: Identifiable {
-    public var id: ObjectIdentifier { ObjectIdentifier(self) }
+    public nonisolated var id: ObjectIdentifier { ObjectIdentifier(self) }
 }

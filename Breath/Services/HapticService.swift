@@ -3,11 +3,13 @@ import Foundation
 import UIKit
 #endif
 
+@MainActor
 protocol HapticServiceProtocol {
     func impact(_ style: HapticService.Style)
     func notify(_ type: HapticService.Notification)
 }
 
+@MainActor
 final class HapticService: HapticServiceProtocol {
     static let shared = HapticService()
 
