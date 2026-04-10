@@ -71,6 +71,7 @@ struct SessionView: View {
                     .font(.title3.weight(.semibold))
                     .foregroundStyle(Constants.Palette.primaryTeal)
             }
+            .accessibilityIdentifier("session.close")
             Spacer()
             Text(String(format: String(localized: "session.round_of"), viewModel.currentRound, viewModel.configuration.rounds))
                 .font(.headline)
