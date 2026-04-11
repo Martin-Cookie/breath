@@ -11,10 +11,13 @@ struct GuidanceStylePickerView: View {
     @State private var previewingStyle: String?
     @State private var showPaywall = false
 
-    init(selectedStyle: Binding<String>, volume: Binding<Double>) {
+    private let audio: AudioServiceProtocol
+
+    init(selectedStyle: Binding<String>, volume: Binding<Double>, audio: AudioServiceProtocol = AudioService.shared) {
         self._selectedStyle = selectedStyle
         self._volume = volume
         self._tentativeStyle = State(initialValue: selectedStyle.wrappedValue)
+        self.audio = audio
     }
 
     var body: some View {
@@ -34,11 +37,11 @@ struct GuidanceStylePickerView: View {
                         Image(systemName: "speaker.fill")
                             .foregroundStyle(Constants.Palette.textSecondary)
                         Slider(value: $volume, in: 0...1) { editing in
-                            if !editing { AudioService.shared.setGuidanceVolume(Float(volume)) }
+                            if !editing { audio.setGuidanceVolume(Float(volume)) }
                         }
                         .tint(Constants.Palette.primaryTeal)
                         .onChange(of: volume) { _, newValue in
-                            AudioService.shared.setGuidanceVolume(Float(newValue))
+                            audio.setGuidanceVolume(Float(newValue))
                         }
                         Image(systemName: "speaker.wave.3.fill")
                             .foregroundStyle(Constants.Palette.primaryTeal)
@@ -62,7 +65,7 @@ struct GuidanceStylePickerView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        AudioService.shared.stopAll()
+                        audio.stopAll()
                         dismiss()
                     } label: {
                         Image(systemName: "xmark.circle.fill")
@@ -121,19 +124,19 @@ struct GuidanceStylePickerView: View {
     }
 
     private func togglePreview(_ id: String) {
-        AudioService.shared.setGuidanceVolume(Float(volume))
+        audio.setGuidanceVolume(Float(volume))
         if previewingStyle == id {
-            AudioService.shared.stopAll()
+            audio.stopAll()
             previewingStyle = nil
         } else {
-            AudioService.shared.playGuidance(key: "breathe_in", style: id)
+            audio.playGuidance(key: "breathe_in", style: id)
             previewingStyle = id
         }
     }
 
     private func confirm() {
         selectedStyle = tentativeStyle
-        AudioService.shared.stopAll()
+        audio.stopAll()
         dismiss()
     }
 }

@@ -9,10 +9,13 @@ struct BreathingSoundsPickerView: View {
     @State private var tentativeVoice: String
     @State private var previewingVoice: String?
 
-    init(voice: Binding<String>, volume: Binding<Double>) {
+    private let audio: AudioServiceProtocol
+
+    init(voice: Binding<String>, volume: Binding<Double>, audio: AudioServiceProtocol = AudioService.shared) {
         self._voice = voice
         self._volume = volume
         self._tentativeVoice = State(initialValue: voice.wrappedValue)
+        self.audio = audio
     }
 
     private struct VoiceOption: Identifiable, Hashable {
@@ -44,11 +47,11 @@ struct BreathingSoundsPickerView: View {
                         Image(systemName: "speaker.fill")
                             .foregroundStyle(Constants.Palette.textSecondary)
                         Slider(value: $volume, in: 0...1) { editing in
-                            if !editing { AudioService.shared.setBreathingVolume(Float(volume)) }
+                            if !editing { audio.setBreathingVolume(Float(volume)) }
                         }
                         .tint(Constants.Palette.primaryTeal)
                         .onChange(of: volume) { _, newValue in
-                            AudioService.shared.setBreathingVolume(Float(newValue))
+                            audio.setBreathingVolume(Float(newValue))
                         }
                         Image(systemName: "speaker.wave.3.fill")
                             .foregroundStyle(Constants.Palette.primaryTeal)
@@ -72,7 +75,7 @@ struct BreathingSoundsPickerView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        AudioService.shared.stopAll()
+                        audio.stopAll()
                         dismiss()
                     } label: {
                         Image(systemName: "xmark.circle.fill")
@@ -123,11 +126,11 @@ struct BreathingSoundsPickerView: View {
     }
 
     private func togglePreview(_ id: String) {
-        AudioService.shared.setBreathingVolume(Float(volume))
+        audio.setBreathingVolume(Float(volume))
         if previewingVoice == id {
             previewingVoice = nil
         } else {
-            AudioService.shared.previewBreathing(voice: id)
+            audio.previewBreathing(voice: id)
             previewingVoice = id
         }
     }

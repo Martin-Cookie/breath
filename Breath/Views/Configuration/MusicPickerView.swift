@@ -11,10 +11,13 @@ struct MusicPickerView: View {
     @State private var previewingTrack: String?
     @State private var showPaywall = false
 
-    init(selectedTrack: Binding<String>, volume: Binding<Double>) {
+    private let audio: AudioServiceProtocol
+
+    init(selectedTrack: Binding<String>, volume: Binding<Double>, audio: AudioServiceProtocol = AudioService.shared) {
         self._selectedTrack = selectedTrack
         self._volume = volume
         self._tentativeTrack = State(initialValue: selectedTrack.wrappedValue)
+        self.audio = audio
     }
 
     var body: some View {
@@ -34,11 +37,11 @@ struct MusicPickerView: View {
                         Image(systemName: "speaker.fill")
                             .foregroundStyle(Constants.Palette.textSecondary)
                         Slider(value: $volume, in: 0...1) { editing in
-                            if !editing { AudioService.shared.setMusicVolume(Float(volume)) }
+                            if !editing { audio.setMusicVolume(Float(volume)) }
                         }
                         .tint(Constants.Palette.primaryTeal)
                         .onChange(of: volume) { _, newValue in
-                            AudioService.shared.setMusicVolume(Float(newValue))
+                            audio.setMusicVolume(Float(newValue))
                         }
                         Image(systemName: "speaker.wave.3.fill")
                             .foregroundStyle(Constants.Palette.primaryTeal)
@@ -62,7 +65,7 @@ struct MusicPickerView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-                        AudioService.shared.stopPreview()
+                        audio.stopPreview()
                         dismiss()
                     } label: {
                         Image(systemName: "xmark.circle.fill")
@@ -71,7 +74,7 @@ struct MusicPickerView: View {
                 }
             }
             .onDisappear {
-                AudioService.shared.stopPreview()
+                audio.stopPreview()
             }
             .sheet(isPresented: $showPaywall) {
                 PaywallView()
@@ -124,17 +127,17 @@ struct MusicPickerView: View {
 
     private func togglePreview(_ trackId: String) {
         if previewingTrack == trackId {
-            AudioService.shared.stopPreview()
+            audio.stopPreview()
             previewingTrack = nil
         } else {
-            AudioService.shared.previewMusic(track: trackId)
+            audio.previewMusic(track: trackId)
             previewingTrack = trackId
         }
     }
 
     private func confirm() {
         selectedTrack = tentativeTrack
-        AudioService.shared.stopPreview()
+        audio.stopPreview()
         dismiss()
     }
 }

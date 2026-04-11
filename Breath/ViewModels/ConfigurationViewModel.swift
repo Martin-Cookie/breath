@@ -8,89 +8,95 @@ import Combine
 final class ConfigurationViewModel: ObservableObject {
 
     private let defaults: UserDefaults
+    private let audio: AudioServiceProtocol
 
     // MARK: - Published state
 
     @Published var speed: BreathingSpeed {
-        didSet { defaults.set(speed.rawValue, forKey: SettingsKey.speed) }
+        didSet { persist(speed.rawValue, forKey: SettingsKey.speed) }
     }
     @Published var rounds: Int {
-        didSet { defaults.set(rounds, forKey: SettingsKey.rounds) }
+        didSet { persist(rounds, forKey: SettingsKey.rounds) }
     }
     @Published var breathsBeforeRetention: Int {
-        didSet { defaults.set(breathsBeforeRetention, forKey: SettingsKey.breathsBeforeRetention) }
+        didSet { persist(breathsBeforeRetention, forKey: SettingsKey.breathsBeforeRetention) }
     }
 
     @Published var backgroundMusicEnabled: Bool {
-        didSet { defaults.set(backgroundMusicEnabled, forKey: SettingsKey.backgroundMusicEnabled) }
+        didSet { persist(backgroundMusicEnabled, forKey: SettingsKey.backgroundMusicEnabled) }
     }
     @Published var breathingPhaseMusic: Bool {
-        didSet { defaults.set(breathingPhaseMusic, forKey: SettingsKey.breathingPhaseMusic) }
+        didSet { persist(breathingPhaseMusic, forKey: SettingsKey.breathingPhaseMusic) }
     }
     @Published var breathingPhaseMusicTrack: String {
-        didSet { defaults.set(breathingPhaseMusicTrack, forKey: SettingsKey.breathingPhaseMusicTrack) }
+        didSet { persist(breathingPhaseMusicTrack, forKey: SettingsKey.breathingPhaseMusicTrack) }
     }
     @Published var retentionPhaseMusic: Bool {
-        didSet { defaults.set(retentionPhaseMusic, forKey: SettingsKey.retentionPhaseMusic) }
+        didSet { persist(retentionPhaseMusic, forKey: SettingsKey.retentionPhaseMusic) }
     }
     @Published var retentionPhaseMusicTrack: String {
-        didSet { defaults.set(retentionPhaseMusicTrack, forKey: SettingsKey.retentionPhaseMusicTrack) }
+        didSet { persist(retentionPhaseMusicTrack, forKey: SettingsKey.retentionPhaseMusicTrack) }
     }
     @Published var musicVolume: Double {
         didSet {
-            defaults.set(musicVolume, forKey: SettingsKey.musicVolume)
-            AudioService.shared.setMusicVolume(Float(musicVolume))
+            persist(musicVolume, forKey: SettingsKey.musicVolume)
+            audio.setMusicVolume(Float(musicVolume))
         }
     }
 
     @Published var guidanceEnabled: Bool {
-        didSet { defaults.set(guidanceEnabled, forKey: SettingsKey.guidanceEnabled) }
+        didSet { persist(guidanceEnabled, forKey: SettingsKey.guidanceEnabled) }
     }
     @Published var breathingPhaseGuidance: Bool {
-        didSet { defaults.set(breathingPhaseGuidance, forKey: SettingsKey.breathingPhaseGuidance) }
+        didSet { persist(breathingPhaseGuidance, forKey: SettingsKey.breathingPhaseGuidance) }
     }
     @Published var breathingPhaseGuidanceStyle: String {
-        didSet { defaults.set(breathingPhaseGuidanceStyle, forKey: SettingsKey.breathingPhaseGuidanceStyle) }
+        didSet { persist(breathingPhaseGuidanceStyle, forKey: SettingsKey.breathingPhaseGuidanceStyle) }
     }
     @Published var retentionPhaseGuidance: Bool {
-        didSet { defaults.set(retentionPhaseGuidance, forKey: SettingsKey.retentionPhaseGuidance) }
+        didSet { persist(retentionPhaseGuidance, forKey: SettingsKey.retentionPhaseGuidance) }
     }
     @Published var retentionPhaseGuidanceStyle: String {
-        didSet { defaults.set(retentionPhaseGuidanceStyle, forKey: SettingsKey.retentionPhaseGuidanceStyle) }
+        didSet { persist(retentionPhaseGuidanceStyle, forKey: SettingsKey.retentionPhaseGuidanceStyle) }
     }
     @Published var guidanceVolume: Double {
         didSet {
-            defaults.set(guidanceVolume, forKey: SettingsKey.guidanceVolume)
-            AudioService.shared.setGuidanceVolume(Float(guidanceVolume))
+            persist(guidanceVolume, forKey: SettingsKey.guidanceVolume)
+            audio.setGuidanceVolume(Float(guidanceVolume))
         }
     }
     @Published var retentionAnnounceInterval: Int {
-        didSet { defaults.set(retentionAnnounceInterval, forKey: SettingsKey.retentionAnnounceInterval) }
+        didSet { persist(retentionAnnounceInterval, forKey: SettingsKey.retentionAnnounceInterval) }
     }
 
     @Published var breathingSounds: Bool {
-        didSet { defaults.set(breathingSounds, forKey: SettingsKey.breathingSounds) }
+        didSet { persist(breathingSounds, forKey: SettingsKey.breathingSounds) }
     }
     @Published var breathingSoundsVoice: String {
-        didSet { defaults.set(breathingSoundsVoice, forKey: SettingsKey.breathingSoundsVoice) }
+        didSet { persist(breathingSoundsVoice, forKey: SettingsKey.breathingSoundsVoice) }
     }
     @Published var breathingSoundsVolume: Double {
         didSet {
-            defaults.set(breathingSoundsVolume, forKey: SettingsKey.breathingSoundsVolume)
-            AudioService.shared.setBreathingVolume(Float(breathingSoundsVolume))
+            persist(breathingSoundsVolume, forKey: SettingsKey.breathingSoundsVolume)
+            audio.setBreathingVolume(Float(breathingSoundsVolume))
         }
     }
     @Published var hapticFeedback: Bool {
-        didSet { defaults.set(hapticFeedback, forKey: SettingsKey.hapticFeedback) }
+        didSet { persist(hapticFeedback, forKey: SettingsKey.hapticFeedback) }
     }
     @Published var pingAndGong: Bool {
-        didSet { defaults.set(pingAndGong, forKey: SettingsKey.pingAndGong) }
+        didSet { persist(pingAndGong, forKey: SettingsKey.pingAndGong) }
+    }
+
+    private func persist<T>(_ value: T, forKey key: String) {
+        defaults.set(value, forKey: key)
     }
 
     // MARK: - Init
 
-    init(defaults: UserDefaults = .standard) {
+    init(defaults: UserDefaults = .standard, audio: AudioServiceProtocol = AudioService.shared) {
         self.defaults = defaults
+        self.audio = audio
         let d = SessionConfiguration.default
 
         self.speed = BreathingSpeed(rawValue: defaults.string(forKey: SettingsKey.speed) ?? "") ?? d.speed
@@ -118,9 +124,9 @@ final class ConfigurationViewModel: ObservableObject {
         self.hapticFeedback = defaults.object(forKey: SettingsKey.hapticFeedback) as? Bool ?? d.hapticFeedback
         self.pingAndGong = defaults.object(forKey: SettingsKey.pingAndGong) as? Bool ?? d.pingAndGong
 
-        AudioService.shared.setMusicVolume(Float(self.musicVolume))
-        AudioService.shared.setBreathingVolume(Float(self.breathingSoundsVolume))
-        AudioService.shared.setGuidanceVolume(Float(self.guidanceVolume))
+        audio.setMusicVolume(Float(self.musicVolume))
+        audio.setBreathingVolume(Float(self.breathingSoundsVolume))
+        audio.setGuidanceVolume(Float(self.guidanceVolume))
     }
 
     // MARK: - API
