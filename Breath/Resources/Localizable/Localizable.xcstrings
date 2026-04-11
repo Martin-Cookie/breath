@@ -733,6 +733,22 @@
         }
       }
     },
+    "onboarding.skip" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Přeskočit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip"
+          }
+        }
+      }
+    },
     "onboarding.start" : {
       "extractionState" : "stale",
       "localizations" : {
