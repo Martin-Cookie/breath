@@ -4,17 +4,18 @@ import XCTest
 @MainActor
 final class ConfigurationViewModelTests: XCTestCase {
 
-    private var defaults: UserDefaults!
+    nonisolated(unsafe) private var defaults: UserDefaults!
+    nonisolated(unsafe) private var suiteName: String = ""
 
     override func setUp() {
         super.setUp()
         // Izolovaný suite pro každý test.
-        let suiteName = "test.breath.\(UUID().uuidString)"
+        suiteName = "test.breath.\(UUID().uuidString)"
         defaults = UserDefaults(suiteName: suiteName)!
     }
 
     override func tearDown() {
-        defaults.removePersistentDomain(forName: defaults.dictionaryRepresentation().keys.first ?? "")
+        defaults.removePersistentDomain(forName: suiteName)
         defaults = nil
         super.tearDown()
     }

@@ -23,7 +23,7 @@ final class MockAudioService: AudioServiceProtocol {
         case stopAll
     }
 
-    private(set) var calls: [Call] = []
+    nonisolated(unsafe) private(set) var calls: [Call] = []
 
     func playMusic(track: String) { calls.append(.playMusic(track)) }
     func stopMusic() { calls.append(.stopMusic) }
@@ -44,8 +44,8 @@ final class MockAudioService: AudioServiceProtocol {
 }
 
 final class MockHapticService: HapticServiceProtocol {
-    private(set) var impacts: [HapticService.Style] = []
-    private(set) var notifications: [HapticService.Notification] = []
+    nonisolated(unsafe) private(set) var impacts: [HapticService.Style] = []
+    nonisolated(unsafe) private(set) var notifications: [HapticService.Notification] = []
 
     func impact(_ style: HapticService.Style) { impacts.append(style) }
     func notify(_ type: HapticService.Notification) { notifications.append(type) }
