@@ -8,7 +8,7 @@ struct RoundResultView: View {
 
     var body: some View {
         VStack(spacing: 32) {
-            Text("ROUND \(roundNumber) OF \(totalRounds)")
+            Text(String(format: NSLocalizedString("session.round_label", comment: ""), roundNumber, totalRounds))
                 .font(.system(size: 14, weight: .semibold))
                 .tracking(2)
                 .foregroundStyle(Constants.Palette.textSecondary)
@@ -29,9 +29,10 @@ struct RoundResultView: View {
                 }
             }
 
-            Text("Tap to continue")
+            Text(String(localized: "session.tap_to_continue"))
                 .font(.caption)
                 .foregroundStyle(Constants.Palette.textSecondary)
         }
+        .accessibilityElement(children: .combine)
     }
 }

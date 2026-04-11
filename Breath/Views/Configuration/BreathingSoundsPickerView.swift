@@ -119,6 +119,7 @@ struct BreathingSoundsPickerView: View {
             )
         }
         .buttonStyle(.plain)
+        .accessibilityLabel(Text("Preview \(option.title)"))
     }
 
     private func togglePreview(_ id: String) {

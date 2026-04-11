@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%@" : {
-
-    },
     "music_picker.title" : {
       "localizations" : {
         "cs" : {
@@ -68,32 +65,82 @@
         }
       }
     },
-    "%@ kol • avg %@" : {
+    "session.round_label" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kolo %lld z %lld"
+          }
+        },
         "en" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ kol • avg %2$@"
+            "state" : "translated",
+            "value" : "ROUND %lld OF %lld"
           }
         }
       }
     },
-    "%@ rounds • %@ total" : {
+    "session.tap_to_continue" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokračuj tapnutím"
+          }
+        },
         "en" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ rounds • %2$@ total"
+            "state" : "translated",
+            "value" : "Tap to continue"
           }
         }
       }
     },
-    "%@%@" : {
+    "results.summary_total" : {
       "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld kol • celkem %@"
+          }
+        },
         "en" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@%2$@"
+            "state" : "translated",
+            "value" : "%lld rounds • %@ total"
+          }
+        }
+      }
+    },
+    "results.round_label" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kolo %lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Round %lld"
+          }
+        }
+      }
+    },
+    "stats.row_summary" : {
+      "localizations" : {
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld kol • průměr %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld rounds • avg %@"
           }
         }
       }
@@ -481,9 +528,6 @@
           }
         }
       }
-    },
-    "Historie" : {
-
     },
     "notification.reminder" : {
       "extractionState" : "stale",
@@ -990,22 +1034,6 @@
         }
       }
     },
-    "Retention Time" : {
-
-    },
-    "Round %@" : {
-
-    },
-    "ROUND %@ OF %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "ROUND %1$@ OF %2$@"
-          }
-        }
-      }
-    },
     "session.breathe_in" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1498,12 +1526,6 @@
           }
         }
       }
-    },
-    "Tap to continue" : {
-
-    },
-    "Žádná data" : {
-
     }
   },
   "version" : "1.0"

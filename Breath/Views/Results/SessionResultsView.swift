@@ -38,7 +38,7 @@ struct SessionResultsView: View {
                         Text(String(localized: "results.complete"))
                             .font(.title.bold())
                             .foregroundStyle(Constants.Palette.primaryTeal)
-                        Text("\(rounds.count) rounds • \(TimeFormatter.mmss(totalDuration)) total")
+                        Text(String(format: NSLocalizedString("results.summary_total", comment: ""), rounds.count, TimeFormatter.mmss(totalDuration)))
                             .foregroundStyle(Constants.Palette.textSecondary)
                     }
 
@@ -50,7 +50,7 @@ struct SessionResultsView: View {
                     VStack(spacing: 0) {
                         ForEach(rounds) { round in
                             HStack {
-                                Text("Round \(round.roundNumber)")
+                                Text(String(format: NSLocalizedString("results.round_label", comment: ""), round.roundNumber))
                                 Spacer()
                                 Text(TimeFormatter.mmss(round.retentionTime))
                                     .monospacedDigit()

@@ -26,6 +26,7 @@ final class AudioService: AudioServiceProtocol, @unchecked Sendable {
     private var musicPlayer: AVAudioPlayer?
     private var previewPlayer: AVAudioPlayer?
     private var guidancePlayer: AVAudioPlayer?
+    private var breathPlayer: AVAudioPlayer?
     private var sfxPlayer: AVAudioPlayer?
     private var speechSynth: AVSpeechSynthesizer?
 
@@ -168,16 +169,27 @@ final class AudioService: AudioServiceProtocol, @unchecked Sendable {
 
     func playGuidance(key: String, style: String) {
         let lang = Locale.current.language.languageCode?.identifier == "cs" ? "cs" : "en"
-        if let url = Bundle.main.url(forResource: "\(key)_\(lang)", withExtension: "m4a")
-            ?? Bundle.main.url(forResource: key, withExtension: "m4a") {
-            do {
-                let player = try AVAudioPlayer(contentsOf: url)
-                player.volume = guidanceVolume
-                player.play()
-                guidancePlayer = player
-                return
-            } catch {
-                print("AudioService guidance error: \(error)")
+        // Resolver chain:
+        //   1) "<style>_<key>_<lang>.m4a"  (style-specific, localized)
+        //   2) "<key>_<lang>.m4a"          (style-agnostic, localized)
+        //   3) "<key>.m4a"                 (style-agnostic, language-agnostic)
+        //   4) speech synth fallback
+        let candidates = [
+            "\(style)_\(key)_\(lang)",
+            "\(key)_\(lang)",
+            key
+        ]
+        for name in candidates {
+            if let url = Bundle.main.url(forResource: name, withExtension: "m4a") {
+                do {
+                    let player = try AVAudioPlayer(contentsOf: url)
+                    player.volume = guidanceVolume
+                    player.play()
+                    guidancePlayer = player
+                    return
+                } catch {
+                    print("AudioService guidance error: \(error)")
+                }
             }
         }
         speakFallback(key: key, lang: lang)
@@ -185,13 +197,8 @@ final class AudioService: AudioServiceProtocol, @unchecked Sendable {
 
     func speakRetentionTime(seconds: Int) {
         let lang = Locale.current.language.languageCode?.identifier == "cs" ? "cs" : "en"
-        let text: String
-        if lang == "cs" {
-            // Pro hodnoty 15/30/45/60 platí tvar "sekund".
-            text = "\(seconds) sekund"
-        } else {
-            text = "\(seconds) seconds"
-        }
+        // Language-agnostic short form avoids plural grammar pitfalls.
+        let text = "\(seconds) s"
         let utt = AVSpeechUtterance(string: text)
         utt.voice = AVSpeechSynthesisVoice(language: lang == "cs" ? "cs-CZ" : "en-US")
         utt.rate = 0.45
@@ -215,12 +222,10 @@ final class AudioService: AudioServiceProtocol, @unchecked Sendable {
     private func guidanceFallbackText(key: String, lang: String) -> String {
         switch (key, lang) {
         case ("breathe_in", "cs"): return "Nadechněte"
-        case ("breathe_out", "cs"): return "A vydechněte"
         case ("let_go", "cs"): return "Pusťte"
         case ("hold", "cs"): return "Zadržte dech"
         case ("recovery", "cs"): return "Zhluboka se nadechněte a zadržte"
         case ("breathe_in", _): return "Breathe in"
-        case ("breathe_out", _): return "And let go"
         case ("let_go", _): return "Now let go"
         case ("hold", _): return "Hold your breath"
         case ("recovery", _): return "Breathe in deeply and hold"
@@ -251,7 +256,7 @@ final class AudioService: AudioServiceProtocol, @unchecked Sendable {
             let player = try AVAudioPlayer(contentsOf: url)
             player.volume = breathingVolume
             player.play()
-            sfxPlayer = player
+            breathPlayer = player
         } catch {
             print("AudioService breath error: \(error)")
         }
@@ -278,11 +283,13 @@ final class AudioService: AudioServiceProtocol, @unchecked Sendable {
         musicPlayer?.stop()
         previewPlayer?.stop()
         guidancePlayer?.stop()
+        breathPlayer?.stop()
         sfxPlayer?.stop()
         speechSynth?.stopSpeaking(at: .immediate)
         musicPlayer = nil
         previewPlayer = nil
         guidancePlayer = nil
+        breathPlayer = nil
         sfxPlayer = nil
         speechSynth = nil
     }

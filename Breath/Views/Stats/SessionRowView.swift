@@ -13,7 +13,7 @@ struct SessionRowView: View {
                 Text(dateString)
                     .font(.subheadline.weight(.semibold))
                     .foregroundStyle(Constants.Palette.primaryTeal)
-                Text("\(session.totalRounds) kol • avg \(TimeFormatter.mmss(session.averageRetention))")
+                Text(String(format: NSLocalizedString("stats.row_summary", comment: ""), session.totalRounds, TimeFormatter.mmss(session.averageRetention)))
                     .font(.caption)
                     .foregroundStyle(Constants.Palette.textSecondary)
             }

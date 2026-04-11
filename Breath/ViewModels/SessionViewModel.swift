@@ -45,6 +45,7 @@ final class SessionViewModel: ObservableObject {
 
     private var breathTask: Task<Void, Never>?
     private var tickerTask: Task<Void, Never>?
+    private var transitionTask: Task<Void, Never>?
     private var retentionStart: Date?
 
     init(
@@ -187,7 +188,7 @@ final class SessionViewModel: ObservableObject {
             audio.playGuidance(key: "recovery", style: configuration.retentionPhaseGuidanceStyle)
         }
 
-        Task { [weak self] in
+        transitionTask = Task { [weak self] in
             guard let self else { return }
             await self.sleep(seconds: 1.0)
             guard !Task.isCancelled, self.phase == .recoveryIn else { return }
@@ -229,7 +230,7 @@ final class SessionViewModel: ObservableObject {
         roundResults.append(result)
         phase = .roundResult
 
-        Task { [weak self] in
+        transitionTask = Task { [weak self] in
             guard let self else { return }
             await self.sleep(seconds: Constants.Session.roundResultAutoAdvance)
             guard !Task.isCancelled, self.phase == .roundResult else { return }
@@ -262,8 +263,10 @@ final class SessionViewModel: ObservableObject {
     private func stopAllTasks() {
         breathTask?.cancel()
         tickerTask?.cancel()
+        transitionTask?.cancel()
         breathTask = nil
         tickerTask = nil
+        transitionTask = nil
     }
 
     private func sleep(seconds: TimeInterval) async {

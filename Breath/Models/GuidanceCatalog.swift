@@ -8,7 +8,9 @@ struct GuidanceStyle: Identifiable, Hashable {
 
 enum GuidanceCatalog {
     static let all: [GuidanceStyle] = [
-        GuidanceStyle(id: "classic", title: "Classic", isPremium: false)
+        GuidanceStyle(id: "classic", title: "Classic", isPremium: false),
+        GuidanceStyle(id: "calm", title: "Calm", isPremium: true),
+        GuidanceStyle(id: "energetic", title: "Energetic", isPremium: true)
     ]
 
     static func style(for id: String) -> GuidanceStyle? {

@@ -117,6 +117,7 @@ struct GuidanceStylePickerView: View {
             )
         }
         .buttonStyle(.plain)
+        .accessibilityLabel(Text("Preview \(style.title)"))
     }
 
     private func togglePreview(_ id: String) {
