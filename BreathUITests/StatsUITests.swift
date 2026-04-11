@@ -24,9 +24,7 @@ final class StatsUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Průběh zadržení"].exists)
         XCTAssertTrue(app.staticTexts["Historie"].exists)
         XCTAssertTrue(app.staticTexts["Zatím žádná data"].exists, "Empty state visible with no sessions")
-        XCTAssertTrue(app.buttons["7 dní"].exists)
-        XCTAssertTrue(app.buttons["30 dní"].exists)
-        XCTAssertTrue(app.buttons["Vše"].exists)
+        XCTAssertTrue(app.buttons["7 dní"].exists, "Period picker shows current selection")
 
         let screenshot = app.screenshot()
         let attachment = XCTAttachment(screenshot: screenshot)
@@ -46,6 +44,9 @@ final class StatsUITests: XCTestCase {
 
         XCTAssertTrue(app.navigationBars["Statistiky"].waitForExistence(timeout: 3))
 
+        // Period picker is a Menu — open it first to reveal options.
+        app.buttons["7 dní"].tap()
+        XCTAssertTrue(app.buttons["30 dní"].waitForExistence(timeout: 2))
         app.buttons["30 dní"].tap()
 
         XCTAssertTrue(
