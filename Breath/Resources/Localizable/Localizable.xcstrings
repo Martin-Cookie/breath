@@ -614,6 +614,66 @@
         }
       }
     },
+    "notifications.hero.title" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Denní připomínka" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Daily reminder" } }
+      }
+    },
+    "notifications.hero.subtitle" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Jemné žďuchnutí, které ti pomůže udržet streak a cvičit každý den." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "A gentle nudge to help you keep your streak and practice every day." } }
+      }
+    },
+    "notifications.presets" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Rychlý výběr" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Quick presets" } }
+      }
+    },
+    "notifications.preset.morning" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Ráno" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Morning" } }
+      }
+    },
+    "notifications.preset.noon" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Poledne" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Noon" } }
+      }
+    },
+    "notifications.preset.evening" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Večer" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Evening" } }
+      }
+    },
+    "notifications.preview" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Náhled" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Preview" } }
+      }
+    },
+    "notifications.preview.body" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Najdi si chvíli a nadechni se." } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Take a moment and breathe." } }
+      }
+    },
+    "notifications.app_name" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "BREATH" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "BREATH" } }
+      }
+    },
+    "notifications.now" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "teď" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "now" } }
+      }
+    },
     "onboarding.next" : {
       "extractionState" : "stale",
       "localizations" : {
