@@ -1079,6 +1079,60 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "All" } }
       }
     },
+    "stats.today.done" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Dnes máš hotovo" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Done for today" } }
+      }
+    },
+    "stats.today.done_subtitle" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Skvělá práce, pokračuj v streaku" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Great work — keep the streak going" } }
+      }
+    },
+    "stats.today.streak" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "%lld dní v řadě" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "%lld day streak" } }
+      }
+    },
+    "stats.today.empty" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Dnes ještě žádná relace" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "No session today yet" } }
+      }
+    },
+    "stats.today.empty_subtitle" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Začni teď a nastartuj streak" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start now and begin your streak" } }
+      }
+    },
+    "stats.today.cta" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Start" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start" } }
+      }
+    },
+    "stats.empty.cta" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Začít první relaci" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Start your first session" } }
+      }
+    },
+    "stats.share" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Sdílet statistiky" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Share stats" } }
+      }
+    },
+    "stats.share_summary" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Breath — %1$lld relací · %2$@ celkem · rekord %3$@ · streak %4$lld dní" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Breath — %1$lld sessions · %2$@ total · best %3$@ · %4$lld day streak" } }
+      }
+    },
     "results.average" : {
       "extractionState" : "stale",
       "localizations" : {
