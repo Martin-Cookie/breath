@@ -16,6 +16,7 @@ enum Constants {
         static let freeHistoryDays = 7
         static let freeMusicTracks: Set<String> = ["sweet_and_spicy"]
         static let freeGuidanceStyles: Set<String> = ["classic"]
+        static let fallbackPriceLabel = "99 Kč"
     }
 
     enum Palette {

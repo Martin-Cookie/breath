@@ -8,13 +8,46 @@ struct PaywallView: View {
     @State private var purchaseInProgress = false
     @State private var errorMessage: String?
 
-    private var features: [(icon: String, title: String)] {
+    private var features: [(icon: String, title: String, subtitle: String)] {
         [
-            ("speedometer", String(localized: "paywall.feature.speeds")),
-            ("music.note", String(localized: "paywall.feature.music_guidance")),
-            ("chart.line.uptrend.xyaxis", String(localized: "paywall.feature.history")),
-            ("square.grid.2x2.fill", String(localized: "paywall.feature.widget")),
-            ("square.and.arrow.up", String(localized: "paywall.feature.share"))
+            ("speedometer",
+             String(localized: "paywall.feature.speeds"),
+             String(localized: "paywall.feature.speeds_subtitle")),
+            ("music.note",
+             String(localized: "paywall.feature.music_guidance"),
+             String(localized: "paywall.feature.music_guidance_subtitle")),
+            ("chart.line.uptrend.xyaxis",
+             String(localized: "paywall.feature.history"),
+             String(localized: "paywall.feature.history_subtitle")),
+            ("square.grid.2x2.fill",
+             String(localized: "paywall.feature.widget"),
+             String(localized: "paywall.feature.widget_subtitle")),
+            ("square.and.arrow.up",
+             String(localized: "paywall.feature.share"),
+             String(localized: "paywall.feature.share_subtitle"))
+        ]
+    }
+
+    private struct CompareRow {
+        let label: String
+        let free: String
+        let pro: String
+    }
+
+    private var compareRows: [CompareRow] {
+        [
+            CompareRow(label: String(localized: "paywall.compare.row.speeds"),
+                       free: "1", pro: "3"),
+            CompareRow(label: String(localized: "paywall.compare.row.music"),
+                       free: String(localized: "paywall.compare.value.music_free"),
+                       pro: String(localized: "paywall.compare.value.music_pro")),
+            CompareRow(label: String(localized: "paywall.compare.row.history"),
+                       free: String(localized: "paywall.compare.value.history_free"),
+                       pro: String(localized: "paywall.compare.value.history_pro")),
+            CompareRow(label: String(localized: "paywall.compare.row.widget"),
+                       free: "✗", pro: "✓"),
+            CompareRow(label: String(localized: "paywall.compare.row.share"),
+                       free: "✗", pro: "✓")
         ]
     }
 
@@ -32,22 +65,31 @@ struct PaywallView: View {
 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 16) {
-                        ForEach(features, id: \.title) { feature in
-                            HStack(spacing: 16) {
-                                Image(systemName: feature.icon)
-                                    .font(.title3)
-                                    .foregroundStyle(Constants.Palette.accentGreen)
-                                    .frame(width: 32)
-                                Text(feature.title)
-                                    .font(.body)
-                                    .foregroundStyle(Constants.Palette.primaryTeal)
-                                Spacer()
+                        VStack(alignment: .leading, spacing: 10) {
+                            ForEach(features, id: \.title) { feature in
+                                HStack(alignment: .top, spacing: 14) {
+                                    Image(systemName: feature.icon)
+                                        .font(.subheadline)
+                                        .foregroundStyle(Constants.Palette.accentGreen)
+                                        .frame(width: 28)
+                                    VStack(alignment: .leading, spacing: 1) {
+                                        Text(feature.title)
+                                            .font(.subheadline.weight(.semibold))
+                                            .foregroundStyle(Constants.Palette.primaryTeal)
+                                        Text(feature.subtitle)
+                                            .font(.caption2)
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    Spacer()
+                                }
                             }
-                            .padding(.vertical, 4)
                         }
+
+                        comparisonBlock
                     }
-                    .padding(.horizontal, 28)
-                    .padding(.top, 12)
+                    .padding(.horizontal, 24)
+                    .padding(.top, 8)
+                    .padding(.bottom, 8)
                 }
 
                 footer
@@ -64,7 +106,7 @@ struct PaywallView: View {
     }
 
     private var header: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 8) {
             HStack {
                 Spacer()
                 Button(action: { dismiss() }) {
@@ -74,26 +116,86 @@ struct PaywallView: View {
                 }
             }
             .padding(.horizontal)
-            .padding(.top, 12)
+            .padding(.top, 8)
 
             ZStack {
                 Circle()
-                    .fill(Constants.Palette.primaryTeal.opacity(0.15))
-                    .frame(width: 120, height: 120)
+                    .fill(LinearGradient(
+                        colors: [Constants.Palette.tealLight, Constants.Palette.primaryTeal],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing))
+                    .frame(width: 72, height: 72)
+                    .offset(x: -16)
+                Circle()
+                    .fill(LinearGradient(
+                        colors: [Constants.Palette.accentOrange, Constants.Palette.accentOrange.opacity(0.7)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing))
+                    .frame(width: 72, height: 72)
+                    .offset(x: 16)
+                    .blendMode(.multiply)
                 Image(systemName: "sparkles")
-                    .font(.system(size: 52, weight: .medium))
-                    .foregroundStyle(Constants.Palette.primaryTeal)
+                    .font(.system(size: 28, weight: .bold))
+                    .foregroundStyle(.white)
             }
+            .frame(height: 84)
 
             Text(String(localized: "paywall.title"))
-                .font(.system(size: 28, weight: .bold, design: .rounded))
+                .font(.system(size: 24, weight: .bold, design: .rounded))
                 .foregroundStyle(Constants.Palette.primaryTeal)
 
             Text(String(localized: "paywall.subtitle"))
-                .font(.subheadline)
+                .font(.footnote)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 32)
+        }
+    }
+
+    private var comparisonBlock: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(String(localized: "paywall.compare.title"))
+                .font(.footnote.weight(.semibold))
+                .foregroundStyle(Constants.Palette.primaryTeal)
+
+            VStack(spacing: 0) {
+                HStack {
+                    Text(String(localized: "paywall.compare.feature"))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Text(String(localized: "paywall.compare.free"))
+                        .frame(width: 60, alignment: .center)
+                    Text(String(localized: "paywall.compare.pro"))
+                        .frame(width: 60, alignment: .center)
+                }
+                .font(.caption2)
+                .foregroundStyle(.secondary)
+                .padding(.vertical, 5)
+
+                Divider()
+
+                ForEach(Array(compareRows.enumerated()), id: \.offset) { idx, row in
+                    HStack {
+                        Text(row.label)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .foregroundStyle(Constants.Palette.primaryTeal)
+                        Text(row.free)
+                            .frame(width: 60, alignment: .center)
+                            .foregroundStyle(.secondary)
+                        Text(row.pro)
+                            .frame(width: 60, alignment: .center)
+                            .foregroundStyle(Constants.Palette.accentOrange)
+                            .fontWeight(.bold)
+                    }
+                    .font(.caption)
+                    .padding(.vertical, 4)
+                    if idx < compareRows.count - 1 {
+                        Divider()
+                    }
+                }
+            }
+            .padding(.horizontal, 12)
+            .background(Color.white.opacity(0.6))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
         }
     }
 
@@ -111,12 +213,12 @@ struct PaywallView: View {
                 .font(.headline)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical, 18)
-                .background(Constants.Palette.primaryTeal)
+                .background(Constants.Palette.accentOrange)
                 .foregroundStyle(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
-                .shadow(color: Constants.Palette.primaryTeal.opacity(0.25), radius: 12, y: 4)
+                .shadow(color: Constants.Palette.accentOrange.opacity(0.3), radius: 12, y: 4)
             }
-            .disabled(purchaseInProgress || store.products.isEmpty)
+            .disabled(purchaseInProgress)
 
             Button(String(localized: "paywall.restore")) {
                 Task { await store.restore() }
@@ -138,7 +240,7 @@ struct PaywallView: View {
         if let price = store.products.first?.displayPrice {
             return String(format: String(localized: "paywall.upgrade_with_price"), price)
         }
-        return String(localized: "paywall.upgrade")
+        return String(format: String(localized: "paywall.upgrade_with_price"), Constants.Freemium.fallbackPriceLabel)
     }
 
     private func purchase() {

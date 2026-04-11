@@ -901,6 +901,120 @@
         "en" : { "stringUnit" : { "state" : "translated", "value" : "OK" } }
       }
     },
+    "paywall.feature.speeds_subtitle" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Pomalé, Standardní i Rychlé tempo" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Slow, Standard and Fast pace" } }
+      }
+    },
+    "paywall.feature.music_guidance_subtitle" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Sweet & Spicy, Forest Treasure a všechny styly" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Sweet & Spicy, Forest Treasure and all styles" } }
+      }
+    },
+    "paywall.feature.history_subtitle" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Bez omezení 7 dní zpět" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Beyond the 7-day free limit" } }
+      }
+    },
+    "paywall.feature.widget_subtitle" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Streak a poslední session přímo na home screen" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Streak and last session right on home screen" } }
+      }
+    },
+    "paywall.feature.share_subtitle" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Sdílej výsledky cvičení s přáteli" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Share workout results with friends" } }
+      }
+    },
+    "paywall.compare.title" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Co získáš s Pro" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "What you get with Pro" } }
+      }
+    },
+    "paywall.compare.feature" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Funkce" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Feature" } }
+      }
+    },
+    "paywall.compare.free" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Free" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Free" } }
+      }
+    },
+    "paywall.compare.pro" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Pro" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Pro" } }
+      }
+    },
+    "paywall.compare.row.speeds" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Rychlosti" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Speeds" } }
+      }
+    },
+    "paywall.compare.row.music" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Hudba" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Music" } }
+      }
+    },
+    "paywall.compare.row.history" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Historie" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "History" } }
+      }
+    },
+    "paywall.compare.row.widget" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Widget" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Widget" } }
+      }
+    },
+    "paywall.compare.row.share" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Sdílení" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "Share" } }
+      }
+    },
+    "paywall.compare.value.unlimited" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "∞" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "∞" } }
+      }
+    },
+    "paywall.compare.value.history_free" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "7 dní" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "7 days" } }
+      }
+    },
+    "paywall.compare.value.history_pro" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Vše" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "All" } }
+      }
+    },
+    "paywall.compare.value.music_free" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "1 stopa" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "1 track" } }
+      }
+    },
+    "paywall.compare.value.music_pro" : {
+      "localizations" : {
+        "cs" : { "stringUnit" : { "state" : "translated", "value" : "Vše" } },
+        "en" : { "stringUnit" : { "state" : "translated", "value" : "All" } }
+      }
+    },
     "stats.best_retention" : {
       "localizations" : {
         "cs" : { "stringUnit" : { "state" : "translated", "value" : "Nejdelší zadržení" } },

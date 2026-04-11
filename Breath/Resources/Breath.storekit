@@ -1,0 +1,36 @@
+{
+  "identifier" : "BREATH_STOREKIT_CONFIG",
+  "nonRenewingSubscriptions" : [],
+  "products" : [
+    {
+      "displayPrice" : "99",
+      "familyShareable" : false,
+      "internalID" : "breath_pro_iid",
+      "localizations" : [
+        {
+          "description" : "Odemkne všechny funkce Breath natrvalo. Jednorázový nákup, žádné předplatné.",
+          "displayName" : "Breath Pro",
+          "locale" : "cs_CZ"
+        },
+        {
+          "description" : "Unlock all Breath features forever. One-time purchase, no subscription.",
+          "displayName" : "Breath Pro",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "cz.martinkoci.breath.pro",
+      "referenceName" : "Breath Pro",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_locale" : "cs_CZ",
+    "_storefront" : "CZE",
+    "_storeKitErrors" : []
+  },
+  "subscriptionGroups" : [],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}
