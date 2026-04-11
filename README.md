@@ -19,15 +19,23 @@ iOS aplikace pro řízené dýchání inspirovaná Wim Hof metodou. SwiftUI + Sw
 
 ```
 Breath/
-├── Models/        # Doménové modely a @Model SwiftData
+├── Models/        # Doménové modely a @Model SwiftData (Session, BreathingSpeed, GuidanceCatalog, MusicCatalog, UserSettings)
 ├── ViewModels/    # MVVM logika (state machine pro session)
-├── Views/         # SwiftUI obrazovky
-├── Services/      # Audio, haptika, notifikace, StoreKit, streak
+├── Views/         # SwiftUI obrazovky (Configuration, Session, Results, Stats, Settings, Paywall, Onboarding)
+├── Services/      # Audio, haptika, notifikace, StoreKit, streak, widget data
 ├── Utilities/     # Formátování, konstanty
-└── Resources/     # Audio, lokalizace
+└── Resources/     # Audio (SFX/breathing hlasy male+female, guidance), lokalizace (Localizable.xcstrings)
 BreathWidget/      # WidgetKit extension
 docs/agents/       # Workflow playbooks (převzato z projektu SVJ)
 ```
+
+## Klíčové features
+
+- Konfigurovatelné cvičení — rychlost, počet kol, počet dechů před retention
+- Hudba na pozadí s nezávislou hlasitostí, výběr stop přes `MusicPickerView`
+- Hlasové vedení (`GuidanceStylePickerView`) s nezávislou hlasitostí a volitelným hlasovým oznamováním času v retention (0/15/30/45/60 s)
+- Zvuky dýchání ve dvou variantách hlasu (mužský / ženský) — výběr a preview v `BreathingSoundsPickerView`
+- Haptická odezva, ping/gong SFX, streak tracking, widget na home screen, freemium přes StoreKit 2
 
 ## Generování Xcode projektu
 

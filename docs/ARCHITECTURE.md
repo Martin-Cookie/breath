@@ -40,7 +40,9 @@ Doménové typy a SwiftData entity.
 - **`Session`** — `@Model` class, perzistovaná session. Rounds jsou uloženy jako JSON blob (`Data`), přístup přes computed property `rounds: [RoundResult]`. Derived properties: `bestRetention`, `averageRetention`.
 - **`RoundResult`** — `Codable struct`, jedno kolo (retention + recovery hold).
 - **`BreathingSpeed`** — enum (`slow`/`standard`/`fast`) s `inhaleDuration`, `exhaleDuration`, `isPremium`, `localizedTitle`.
-- **`UserSettings`** — obsahuje pouze `SettingsKey` enum (string klíče pro `@AppStorage`) a `SessionConfiguration` struct (immutable snapshot předávaný do ViewModelů).
+- **`GuidanceCatalog`** — statický katalog dostupných stylů hlasového vedení (`GuidanceStyle` s `id`, `title`, `isPremium`). MVP obsahuje jen `classic`.
+- **`MusicCatalog`** — statický katalog hudebních stop (`MusicTrack` s `id`, `title`, `isPremium`). MVP obsahuje `sweet_and_spicy` (free) a `forest_treasure` (premium).
+- **`UserSettings`** — obsahuje pouze `SettingsKey` enum (string klíče pro `@AppStorage`) a `SessionConfiguration` struct (immutable snapshot předávaný do ViewModelů). `SessionConfiguration` obsahuje kromě speed/rounds/breaths i kompletní audio konfiguraci: `breathingPhaseMusicTrack`, `retentionPhaseMusicTrack`, `musicVolume`, `breathingPhaseGuidanceStyle`, `retentionPhaseGuidanceStyle`, `guidanceVolume`, `retentionAnnounceInterval` (0/15/30/45/60 s), `breathingSoundsVoice` (`male`/`female`), `breathingSoundsVolume`, `hapticFeedback`, `pingAndGong`.
 
 ### ViewModels (`Breath/ViewModels/`)
 `@MainActor final class ObservableObject`. Obchodní logika, žádný import SwiftUI mimo `@Published`.
@@ -52,7 +54,7 @@ Doménové typy a SwiftData entity.
 Jedna obrazovka = jeden soubor. Sdílené komponenty (např. `BreathCircleView`) jsou v adresáři feature kde se primárně používají.
 
 Features:
-- **Configuration** — hlavní obrazovka, selektory (speed/rounds/breaths), music/guidance/extra sections, sticky Start button
+- **Configuration** — hlavní obrazovka, selektory (speed/rounds/breaths), sections `MusicSettingsSection`, `GuidanceSettingsSection`, `ExtraSettingsSection`, sticky Start button. Detailní výběr audio zdrojů otevírá samostatné picker sheety: `MusicPickerView`, `GuidanceStylePickerView`, `BreathingSoundsPickerView` (volba `male`/`female` hlasu, slider hlasitosti, preview tlačítko). `GuidanceSettingsSection` dále obsahuje slider „retention announce interval" (0/15/30/45/60 s) pro hlasové oznamování času v retention fázi.
 - **Session** — state machine UI; samostatné views pro `BreathingPhase`, `RetentionPhase`, `RecoveryPhase`, `RoundResult`
 - **Results** — `SessionResultsView` (po dokončení)
 - **Stats** — `StatsView` s Swift Charts
@@ -63,7 +65,7 @@ Features:
 ### Services (`Breath/Services/`)
 Singletony (`shared`) s protokolem pro testovatelnost. Ne-UI stavová logika.
 
-- **`AudioService`** — AVAudioPlayer pro music/guidance/SFX, `AVSpeechSynthesizer` fallback pro chybějící audio soubory. Pozoruje `AVAudioSession.interruptionNotification` a `routeChangeNotification` — při hovoru pauzuje, po skončení resumuje, při odpojení sluchátek pauzuje.
+- **`AudioService`** — AVAudioPlayer pro music/guidance/SFX, `AVSpeechSynthesizer` fallback pro chybějící guidance audio soubory. `AudioServiceProtocol` API: `playMusic/stopMusic/setMusicVolume/previewMusic/stopPreview`, `setGuidanceVolume/playGuidance(key:style:)/speakRetentionTime(seconds:)`, `setBreathingVolume/playBreathingIn(voice:)/playBreathingOut(voice:)/previewBreathing(voice:)`, `playPing/playGong/playWarning/stopAll`. Breathing SFX existují ve dvou variantách — `breathing_in.m4a` / `breathing_in_female.m4a` a `breathing_out.m4a` / `breathing_out_female.m4a` (fallback na mužskou variantu pokud female soubor chybí). Hlasitosti hudby/guidance/breathing jsou nezávislé. Pozoruje `AVAudioSession.interruptionNotification` a `routeChangeNotification` — při hovoru pauzuje, po skončení resumuje, při odpojení sluchátek pauzuje.
 - **`HapticService`** — `UIImpactFeedbackGenerator` wrapper.
 - **`StreakService`** — **pure enum**, `compute(from:calendar:referenceDate:)` vrací `StreakInfo`. Injectable `calendar` + `referenceDate` pro deterministické testy.
 - **`NotificationService`** — `scheduleDailyReminder(hour:minute:)` a `scheduleStreakWarning(streakCount:lastSessionDate:)` (fires v 20:00 pokud dnes necvičil a má streak ≥ 2).
